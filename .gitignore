@@ -1,0 +1,7 @@
+# Gemini/Antigravity Brain
+.gemini/
+.brain/
+
+# OS files
+.DS_Store
+Thumbs.db
