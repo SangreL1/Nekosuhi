@@ -1,44 +1,151 @@
-// ── CART STATE ──────────────────────────────────────────
+const PROTEINS = ["Pollo", "Carne", "Camarón", "Kanikama", "Vegetariano", "Vegano"];
+const INGREDIENTS = ["Queso", "Palta", "Cebollín", "Morrón", "Pepino", "Champiñón"];
+const WRAPS = [
+  "Panco", "Queso", "Palta", "Sésamo", "Cebollín", "Nori", "Merquén", 
+  "Nori-Panco", "Panco Merquén", "Salmón", "Jamón Serrano", "Mango", "Plátano Frito"
+];
+
+// ── STATE ───────────────────────────────────────────────────
 let cart = [];
 let deliveryType = 'delivery';
 
-// ── DOM REFS ────────────────────────────────────────────
-const cartCount   = document.getElementById('cartCount');
-const cartBtn     = document.getElementById('cartBtn');
-const cartDrawer  = document.getElementById('cartDrawer');
-const cartOverlay = document.getElementById('cartOverlay');
-const cartClose   = document.getElementById('cartClose');
-const sauceChecks = document.querySelectorAll('.sauce-check');
+// ── DOM REFS ───────────────────────────────────────────────
+const cartCount = document.getElementById('cartCount');
 const drawerItems = document.getElementById('drawerItems');
 const drawerEmpty = document.getElementById('drawerEmpty');
-const drawerFooter= document.getElementById('drawerFooter');
+const drawerFooter = document.getElementById('drawerFooter');
 const drawerTotal = document.getElementById('drawerTotal');
-const clearCartBtn= document.getElementById('clearCart');
-const toast       = document.getElementById('toast');
-const hamburger   = document.getElementById('hamburger');
-const navLinks    = document.getElementById('navLinks');
 
-// ── CART LOGIC ──────────────────────────────────────────
-function addToCart(name, price, metadata = null) {
-  const existingItem = (metadata) ? null : cart.find(item => item.name === name);
+// ── PROMO BUILDER ──────────────────────────────────────────
+const PromoBuilder = {
+  active: false,
+  currentPromo: null, // { qty, rolls, price, name }
+  selections: [], // [{ protein, ingredients: [], wrap }]
+  currentRollIndex: 0,
 
-  if (existingItem) {
-    existingItem.qty++;
-  } else {
-    cart.push({
-      name,
-      price: parseInt(price),
-      qty: 1,
-      notes: '',
-      metadata: metadata
+  open(promo, imgUrl) {
+    this.active = true;
+    this.currentPromo = promo;
+    this.selections = Array.from({ length: promo.rolls }, () => ({
+      protein: null,
+      ingredients: [],
+      wrap: "Panco"
+    }));
+
+    document.getElementById('promoBuilderModal').classList.add('open');
+    if (imgUrl) document.getElementById('builderPromoImg').src = imgUrl;
+    document.getElementById('builderTitle').textContent = promo.name;
+    document.body.style.overflow = 'hidden';
+    this.render();
+  },
+
+  close() {
+    this.active = false;
+    document.getElementById('promoBuilderModal').classList.remove('open');
+    document.body.style.overflow = '';
+  },
+
+  render() {
+    const container = document.getElementById('builderRollContainer');
+    const itemCount = document.getElementById('builderItemsCount');
+    const totalPriceEl = document.getElementById('builderTotalPrice');
+    const confirmBtn = document.getElementById('btnConfirmPromo');
+
+    let html = '';
+    this.selections.forEach((roll, idx) => {
+      html += `
+        <div class="selection-row">
+          <h5>ROLL ${idx + 1}</h5>
+          
+          <div class="builder-protein">
+            <label>PROTEÍNA (Elige 1)</label>
+            <div class="ingredient-grid">
+              ${PROTEINS.map(p => `
+                <button class="btn-select ${roll.protein === p ? 'active' : ''}" 
+                  onclick="PromoBuilder.setProtein(${idx}, '${p}')">${p}</button>
+              `).join('')}
+            </div>
+          </div>
+
+          <div class="builder-ingredients">
+            <label>RELLENOS (Elige 2)</label>
+            <div class="ingredient-grid">
+              ${INGREDIENTS.map(i => `
+                <button class="btn-select ${roll.ingredients.includes(i) ? 'active' : ''}" 
+                  onclick="PromoBuilder.toggleIngredient(${idx}, '${i}')">${i}</button>
+              `).join('')}
+            </div>
+          </div>
+
+          <div class="builder-wrap">
+            <label>ENVOLTURA</label>
+            <select class="selection-select" onchange="PromoBuilder.setWrap(${idx}, this.value)">
+              ${WRAPS.map(w => `
+                <option value="${w}" ${roll.wrap === w ? 'selected' : ''}>${w}</option>
+              `).join('')}
+            </select>
+          </div>
+        </div>
+      `;
     });
+
+    container.innerHTML = html;
+
+    const completedRolls = this.selections.filter(s => s.protein && s.ingredients.length === 2).length;
+    const total = this.currentPromo.price;
+
+    itemCount.textContent = `${completedRolls} / ${this.currentPromo.rolls} Rolls listos`;
+    totalPriceEl.textContent = formatPrice(total);
+    confirmBtn.disabled = completedRolls < this.currentPromo.rolls;
+  },
+
+  setProtein(rollIdx, val) {
+    this.selections[rollIdx].protein = val;
+    this.render();
+  },
+
+  toggleIngredient(rollIdx, val) {
+    const roll = this.selections[rollIdx];
+    if (roll.ingredients.includes(val)) {
+      roll.ingredients = roll.ingredients.filter(i => i !== val);
+    } else if (roll.ingredients.length < 2) {
+      roll.ingredients.push(val);
+    }
+    this.render();
+  },
+
+  setWrap(rollIdx, name) {
+    this.selections[rollIdx].wrap = name;
+    this.render();
+  },
+
+  confirm() {
+    const finalPrice = this.currentPromo.price;
+    const details = this.selections.map((s, idx) =>
+      `Roll ${idx + 1}: ${s.protein} + ${s.ingredients.join(' e ')} en ${s.wrap}`
+    ).join(' | ');
+
+    addToCart(this.currentPromo.name, finalPrice, { details });
+    this.close();
   }
+};
+
+window.PromoBuilder = PromoBuilder; // Make global for onclick
+
+// ── CART LOGIC ──────────────────────────────────────────────
+function addToCart(name, price, metadata = null) {
+  cart.push({
+    name,
+    price: parseInt(price),
+    qty: 1,
+    notes: '',
+    metadata: metadata
+  });
 
   saveCart();
   updateCartUI();
   showToast(`✅ ${name} agregado`);
-  
-  // Pulse on cart btn
+
   cartCount.classList.remove('pulse');
   void cartCount.offsetWidth;
   cartCount.classList.add('pulse');
@@ -65,7 +172,6 @@ function clearCart() {
 
 function getTotal() {
   let sum = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
-  // Add sauces from form
   document.querySelectorAll('.sauce-check:checked').forEach(s => {
     sum += parseInt(s.dataset.price);
   });
@@ -82,31 +188,20 @@ function saveCart() {
 
 function loadCart() {
   const storedCart = localStorage.getItem('nekoCart');
-  if (storedCart) {
-    cart = JSON.parse(storedCart);
-  }
+  if (storedCart) cart = JSON.parse(storedCart);
 }
 
 function updateCartUI() {
   const total = getTotal();
   const count = cart.reduce((s, i) => s + i.qty, 0);
-
-  // Update count badge
   cartCount.textContent = count;
 
-
-  // ── Drawer cart ──
-  renderCartItems(drawerItems, drawerEmpty, 'drawer');
-  if (cart.length > 0) {
-    drawerFooter.style.display = 'block';
-    drawerTotal.textContent = formatPrice(total);
-  } else {
-    drawerFooter.style.display = 'none';
-  }
+  renderCartItems(drawerItems, drawerEmpty);
+  drawerFooter.style.display = cart.length > 0 ? 'block' : 'none';
+  drawerTotal.textContent = formatPrice(total);
 }
 
-function renderCartItems(container, emptyEl, prefix) {
-  // Remove old cart items (keep the empty notice)
+function renderCartItems(container, emptyEl) {
   Array.from(container.querySelectorAll('.cart-item-wrapper')).forEach(el => el.remove());
 
   if (cart.length === 0) {
@@ -119,226 +214,123 @@ function renderCartItems(container, emptyEl, prefix) {
     const div = document.createElement('div');
     div.className = 'cart-item';
     div.innerHTML = `
-      <span class="cart-item-name">${item.name}</span>
-      <div class="cart-item-qty">
-        <button class="qty-btn" data-idx="${idx}" data-delta="-1">−</button>
-        <span class="qty-num">${item.qty}</span>
-        <button class="qty-btn" data-idx="${idx}" data-delta="1">+</button>
+      <div class="cart-item">
+        <div class="cart-item-info">
+          <span class="cart-item-name">${item.name}</span>
+          ${item.metadata && item.metadata.details ? `<small class="cart-item-details">${item.metadata.details}</small>` : ''}
+        </div>
+        <div class="cart-item-right">
+          <div class="cart-item-qty">
+            <button class="qty-btn" onclick="changeQty(${idx}, -1)">−</button>
+            <span class="qty-num">${item.qty}</span>
+            <button class="qty-btn" onclick="changeQty(${idx}, 1)">+</button>
+          </div>
+          <span class="cart-item-price">${formatPrice(item.price * item.qty)}</span>
+          <button class="cart-item-remove" onclick="removeFromCart(${idx})">🗑</button>
+        </div>
       </div>
-      <span class="cart-item-price">${formatPrice(item.price * item.qty)}</span>
-      <button class="cart-item-remove" data-idx="${idx}" title="Eliminar">🗑</button>
-    `;
-    // Render item notes
-    const itemNotes = document.createElement('div');
-    itemNotes.className = 'cart-item-notes';
-    itemNotes.innerHTML = `
-      <textarea class="item-note-input" placeholder="Nota para este producto..." data-index="${idx}">${item.notes || ''}</textarea>
     `;
 
-    // Listen for note changes
-    itemNotes.querySelector('textarea').addEventListener('input', (e) => {
-      cart[idx].notes = e.target.value;
-      saveCart();
-    });
+    const itemNotes = document.createElement('div');
+    itemNotes.className = 'cart-item-notes';
+    itemNotes.innerHTML = `<textarea class="item-note-input" placeholder="Nota..." oninput="updateNote(${idx}, this.value)">${item.notes || ''}</textarea>`;
 
     const itemContainer = document.createElement('div');
     itemContainer.className = 'cart-item-wrapper';
-    itemContainer.style.borderBottom = "1px solid rgba(255,255,255,0.05)";
-    itemContainer.style.paddingBottom = "0.5rem";
     itemContainer.appendChild(div);
     itemContainer.appendChild(itemNotes);
-
     container.appendChild(itemContainer);
   });
-
-  // Events
-  container.querySelectorAll('.qty-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      changeQty(parseInt(btn.dataset.idx), parseInt(btn.dataset.delta));
-    });
-  });
-  container.querySelectorAll('.cart-item-remove').forEach(btn => {
-    btn.addEventListener('click', () => {
-      removeFromCart(parseInt(btn.dataset.idx));
-    });
-  });
 }
 
-function openDrawer() {
-  const drawer = document.getElementById('cartDrawer');
-  if (drawer) {
-    drawer.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
+function updateNote(idx, val) {
+  cart[idx].notes = val;
+  saveCart();
 }
 
-function closeDrawer() {
-  const drawer = document.getElementById('cartDrawer');
-  if (drawer) {
-    drawer.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-}
+window.changeQty = changeQty;
+window.removeFromCart = removeFromCart;
+window.updateNote = updateNote;
 
-// ── INIT ─────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', () => {
-  try {
-    loadCart();
-    updateCartUI();
-    console.log('🐱 Neko Sushi Rolls - Script cargado correctamente');
-  } catch (e) {
-    console.error('Error en inicialización de carrito:', e);
-  }
-});
-
-// ── TOAST ───────────────────────────────────────────────
-let toastTimeout;
+// ── UTILS ───────────────────────────────────────────────────
 function showToast(msg) {
   const toast = document.getElementById('toast');
   if (!toast) return;
   toast.textContent = msg;
   toast.classList.add('show');
-  clearTimeout(toastTimeout);
-  toastTimeout = setTimeout(() => toast.classList.remove('show'), 3000);
+  setTimeout(() => toast.classList.remove('show'), 3000);
 }
 
-// ── GLOBAL CLICK DELEGATION ────────────────────────────
-document.addEventListener('click', (e) => {
-  // Menu Tabs
-  const tabBtn = e.target.closest('.tab-btn');
-  if (tabBtn) {
-    const targetTabId = tabBtn.getAttribute('data-tab');
-    if (targetTabId) {
-      document.querySelectorAll('.tab-btn').forEach(b => {
-        b.classList.toggle('active', b.getAttribute('data-tab') === targetTabId);
-      });
-      document.querySelectorAll('.tab-content').forEach(c => {
-        c.classList.toggle('active', c.id === 'tab-' + targetTabId);
-      });
+// ── EVENTS ──────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  loadCart();
+  updateCartUI();
+
+  // Click Delegation
+  document.addEventListener('click', (e) => {
+    // Menu Tabs
+    if (e.target.classList.contains('tab-btn')) {
+      const target = e.target.dataset.tab;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === target));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.toggle('active', c.id === 'tab-' + target));
     }
-  }
 
-  // Delivery Toggle
-  const dtBtn = e.target.closest('.dt-btn');
-  if (dtBtn) {
-    document.querySelectorAll('.dt-btn').forEach(b => b.classList.remove('active'));
-    dtBtn.classList.add('active');
-    deliveryType = dtBtn.getAttribute('data-type') || 'delivery';
-    const addrGroup = document.getElementById('drawerAddressGroup');
-    const pickGroup = document.getElementById('drawerPickupInfo');
-    if (addrGroup) {
-      addrGroup.style.display = (deliveryType === 'delivery') ? 'block' : 'none';
+    // Delivery Toggle
+    if (e.target.classList.contains('dt-btn')) {
+      document.querySelectorAll('.dt-btn').forEach(b => b.classList.remove('active'));
+      e.target.classList.add('active');
+      deliveryType = e.target.dataset.type;
+      document.getElementById('drawerAddressGroup').style.display = deliveryType === 'delivery' ? 'block' : 'none';
+      document.getElementById('drawerPickupInfo').style.display = deliveryType === 'retiro' ? 'block' : 'none';
     }
-    if (pickGroup) {
-      pickGroup.style.display = (deliveryType === 'retiro') ? 'block' : 'none';
+
+    // Add normal item
+    if (e.target.classList.contains('btn-add-cart')) {
+      addToCart(e.target.dataset.name, e.target.dataset.price);
     }
-  }
-
-  // Add to Cart
-  const addBtn = e.target.closest('.btn-add-cart');
-  if (addBtn) {
-    addToCart(addBtn.dataset.name, addBtn.dataset.price);
-  }
-
-  const addBtnSm = e.target.closest('.btn-add-cart-sm');
-  if (addBtnSm) {
-    const card = addBtnSm.closest('.menu-card');
-    if (card) addToCart(card.dataset.name, card.dataset.price);
-  }
-
-  const addBtnTable = e.target.closest('.btn-add-table');
-  if (addBtnTable) {
-    e.stopPropagation();
-    const row = addBtnTable.closest('.price-row');
-    if (row) addToCart(`Promo ${row.dataset.qty} Piezas`, row.dataset.price);
-  }
-
-
-  // Drawer Controls
-  if (e.target.closest('#cartBtn')) openDrawer();
-  if (e.target.closest('#cartClose') || e.target.closest('#cartOverlay')) closeDrawer();
-  if (e.target.closest('#clearCart')) clearCart();
-  if (e.target.closest('#hamburger')) {
-    const nav = document.getElementById('navLinks');
-    if (nav) nav.classList.toggle('open');
-  }
-  
-  // Close nav on link click
-  if (e.target.closest('.nav-links a')) {
-    const nav = document.getElementById('navLinks');
-    if (nav) nav.classList.remove('open');
-  }
-
-  // Builder Options
-  const builderOpt = e.target.closest('.builder-opt');
-  if (builderOpt) {
-    const type = builderOpt.dataset.type;
-    const value = builderOpt.dataset.value;
-
-    if (type === 'protein') {
-      document.querySelectorAll('.builder-opt[data-type="protein"]').forEach(b => b.classList.remove('active'));
-      builderOpt.classList.add('active');
-      builderState.protein = value;
-    } else if (type === 'ingredient') {
-      if (builderOpt.classList.contains('active')) {
-        builderOpt.classList.remove('active');
-        builderState.ingredients = builderState.ingredients.filter(i => i !== value);
-      } else if (builderState.ingredients.length < 2) {
-        builderOpt.classList.add('active');
-        builderState.ingredients.push(value);
-      }
-    } else if (type === 'wrap') {
-      document.querySelectorAll('.builder-opt[data-type="wrap"]').forEach(b => b.classList.remove('active'));
-      builderOpt.classList.add('active');
-      builderState.wrap = value;
-      builderState.extraPrice = parseInt(builderOpt.dataset.extra || 0);
+    if (e.target.classList.contains('btn-add-cart-sm')) {
+      const card = e.target.closest('.menu-card');
+      addToCart(card.dataset.name, card.dataset.price);
     }
-    updateBuilderPrice();
-  }
 
-  // Builder Add to Cart
-  if (e.target.id === 'btnAddCustomRoll') {
-    if (!builderState.protein || builderState.ingredients.length < 1) {
-      alert('Por favor elige al menos una proteína y un ingrediente.');
-      return;
+    // Add Promo (Open Builder)
+    const promoBtn = e.target.closest('.btn-add-promo');
+    if (promoBtn) {
+      const card = promoBtn.closest('.product-card');
+      const img = card.querySelector('.product-img').src;
+      PromoBuilder.open({
+        qty: parseInt(promoBtn.dataset.qty),
+        rolls: parseInt(promoBtn.dataset.rolls),
+        price: parseInt(promoBtn.dataset.price),
+        name: `Promo ${promoBtn.dataset.qty} Piezas`
+      }, img);
     }
-    const name = `Roll Personalizado (${builderState.protein})`;
-    const desc = `Relleno: ${builderState.ingredients.join(', ')}. Envoltura: ${builderState.wrap}`;
-    const price = 4500 + builderState.extraPrice;
-    addToCart(name, price, { desc });
-  }
-});
 
-// ── BUILDER STATE ──────────────────────────────────────
-const builderState = {
-  protein: null,
-  ingredients: [],
-  wrap: 'Panco',
-  extraPrice: 0
-};
+    // Modal Closes
+    if (e.target.closest('#builderClose') || e.target.id === 'builderOverlay') PromoBuilder.close();
+    if (e.target.closest('#btnConfirmPromo')) PromoBuilder.confirm();
+ 
+    // Drawer Closes
+    if (e.target.closest('#cartBtn')) document.getElementById('cartDrawer').classList.add('open');
+    if (e.target.closest('#cartClose') || e.target.id === 'cartOverlay') document.getElementById('cartDrawer').classList.remove('open');
 
-function updateBuilderPrice() {
-  const el = document.getElementById('builderPrice');
-  if (el) {
-    const total = 4500 + builderState.extraPrice;
-    el.innerText = formatPrice(total);
-  }
-}
+    // Hamburger
+    if (e.target.closest('#hamburger')) {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
 
-// ── SAUCE UPDATE ──────────────────────────────────────
-document.addEventListener('change', (e) => {
-  if (e.target.classList.contains('sauce-check')) {
-    updateCartUI();
-  }
-});
+    // Auto-close mobile menu on link click
+    if (e.target.tagName === 'A' && e.target.closest('#navLinks')) {
+      document.getElementById('navLinks').classList.remove('open');
+    }
+  });
 
-// ── ORDER SUBMISSION ──────────────────────────────────
-document.addEventListener('click', (e) => {
-  if (e.target.id === 'btnSendOrderDrawer') {
-    const name = document.getElementById('drawerName')?.value;
-    const address = document.getElementById('drawerAddress')?.value;
-    const payment = document.getElementById('drawerPayment')?.value;
-    
+  // Order Submission
+  document.getElementById('btnSendOrderDrawer').addEventListener('click', () => {
+    const name = document.getElementById('drawerName').value;
+    const address = document.getElementById('drawerAddress').value;
+    const payment = document.getElementById('drawerPayment').value;
+
     if (cart.length === 0) return alert('El carrito está vacío');
     if (!name) return alert('Por favor ingresa tu nombre');
     if (deliveryType === 'delivery' && !address) return alert('Por favor ingresa tu dirección');
@@ -352,52 +344,97 @@ document.addEventListener('click', (e) => {
     msg += `🛒 *DETALLE DEL PEDIDO:*\n`;
     cart.forEach(item => {
       msg += `• *${item.name}* x${item.qty}`;
-      if (item.metadata && item.metadata.desc) msg += `\n  (${item.metadata.desc})`;
+      if (item.metadata && item.metadata.details) msg += `\n  (${item.metadata.details})`;
       if (item.notes) msg += `\n  📝 _Nota: ${item.notes}_`;
       msg += `\n  Subtotal: ${formatPrice(item.price * item.qty)}\n\n`;
     });
 
     const sauces = Array.from(document.querySelectorAll('.sauce-check:checked')).map(s => s.dataset.name);
-    if (sauces.length > 0) {
-      msg += `🥣 *Salsas:* ${sauces.join(', ')}\n\n`;
-    }
+    if (sauces.length > 0) msg += `🥣 *Salsas:* ${sauces.join(', ')}\n\n`;
 
     msg += `*TOTAL A PAGAR: ${formatPrice(getTotal())}*`;
 
-    const waUrl = `https://wa.me/56935220586?text=${encodeURIComponent(msg)}`;
-    window.open(waUrl, '_blank');
+    window.open(`https://wa.me/56935220586?text=${encodeURIComponent(msg)}`, '_blank');
+  });
+});
+
+// ── NAVIGATION ──────────────────────────────────────────────
+function showCategorySection(id) {
+  // Hide only the menu sections, leave map/reviews/footer visible
+  document.querySelectorAll('.menu-section').forEach(s => s.style.display = 'none');
+  document.querySelector('.categories-section').style.display = 'none';
+  
+  const target = document.getElementById(id);
+  if (target) {
+    target.style.display = 'block';
+    // Add back button if not already added
+    let header = target.querySelector('.section-header');
+    if (header && !header.querySelector('.back-to-menu')) {
+      const backBtn = document.createElement('button');
+      backBtn.className = 'back-to-menu';
+      backBtn.innerHTML = '← Volver al inicio';
+      backBtn.onclick = hideCategorySections;
+      header.prepend(backBtn);
+    }
+  }
+  requestAnimationFrame(() => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  });
+}
+
+function hideCategorySections() {
+  // Only hide menu sections — map, reviews, footer stay visible
+  document.querySelectorAll('.menu-section').forEach(s => s.style.display = 'none');
+  document.querySelector('.categories-section').style.display = 'block';
+  requestAnimationFrame(() => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  });
+}
+
+// Ensure logo returns home
+document.addEventListener('DOMContentLoaded', () => {
+  const logo = document.querySelector('.nav-logo');
+  if (logo) {
+    logo.addEventListener('click', (e) => {
+      e.preventDefault();
+      hideCategorySections();
+    });
   }
 });
 
-// ── UTILS (Robust) ────────────────────────────────────
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1 });
-
-function initObserver() {
-  document.querySelectorAll('.promo-card, .menu-card, .review-card, .gallery-item').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(el);
-  });
+function closeMenu() {
+  const navLinks = document.getElementById('navLinks');
+  if (navLinks) navLinks.classList.remove('open');
 }
 
-const navbar = document.getElementById('navbar');
-if (navbar) {
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      navbar.style.borderBottomColor = 'rgba(232,126,26,0.35)';
-    } else {
-      navbar.style.borderBottomColor = 'rgba(232,126,26,0.2)';
-    }
-  });
-}
+// ── BOX ADD TO CART ──────────────────────────────────────────
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('.btn-box-add');
+  if (!btn) return;
+  
+  const boxCard = btn.closest('.box-card');
+  const name = btn.dataset.name;
+  const price = parseInt(btn.dataset.price);
+  
+  // Get selected topping from dropdown
+  const select = boxCard.querySelector('.box-select');
+  const toppingValue = select ? select.value : null;
+  
+  let details = '';
+  if (toppingValue && toppingValue !== 'Sin topping') {
+    details = `Topping: ${toppingValue}`;
+  } else if (select) {
+    details = 'Sin topping seleccionado';
+  }
+  
+  // Use addToCart with correct metadata format
+  addToCart(name, price, details ? { details } : null);
+});
 
-document.addEventListener('DOMContentLoaded', initObserver);
+window.showCategorySection = showCategorySection;
+window.hideCategorySections = hideCategorySections;
+window.closeMenu = closeMenu;

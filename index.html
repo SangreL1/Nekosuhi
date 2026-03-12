@@ -3,493 +3,457 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Neko Sushi Rolls – Antofagasta | Delivery y Retiro</title>
-  <meta name="description" content="Neko Sushi Rolls Antofagasta. El mejor sushi de la ciudad. Pide por WhatsApp con delivery o retiro en local. Rolls premium, promociones y más."/>
+  <title>Neko Sushi Rolls – Antofagasta | Sushi Premium & Promociones</title>
+  <meta name="description" content="Neko Sushi Rolls Antofagasta. Sushi premium personalizado. Pide nuestras promociones y elige tus rellenos y envolturas favoritas."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
 
-<!-- =========  NAVBAR  ========= -->
-<nav class="navbar" id="navbar">
-  <div class="nav-container">
-    <a href="#inicio" class="nav-logo">
-      <img src="Imagenes/logo.jpeg" alt="Neko Sushi Rolls" class="logo-img"/>
-    </a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#inicio">Inicio</a></li>
-      <li><a href="#promociones">Promociones</a></li>
-      <li><a href="#menu">Menú</a></li>
-      <li><a href="#pedido">Hacer Pedido</a></li>
-      <li><a href="#ubicacion">Ubicación</a></li>
-      <li><a href="#opiniones">Opiniones</a></li>
-    </ul>
-    <div class="nav-actions">
-      <a href="https://wa.me/56935220586" target="_blank" class="btn-wsp-nav">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        WhatsApp
-      </a>
-      <button class="cart-btn" id="cartBtn" aria-label="Carrito de compras">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-        <span class="cart-count" id="cartCount">0</span>
-      </button>
-      <button class="hamburger" id="hamburger" aria-label="Menú">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
+<!-- =========  TOP BAR  ========= -->
+<div class="top-bar">
+  <div class="top-container">
+    <div class="top-item">📍 Río Lauca 782, Antofagasta</div>
+    <div class="top-item">📞 <a href="https://wa.me/56935220586" target="_blank">+56 9 3522 0586</a></div>
+    <div class="top-item">🕒 Lun-Dom: 13:00 - 00:00</div>
   </div>
-</nav>
+</div>
 
-<!-- =========  HERO  ========= -->
-<section class="hero" id="inicio">
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <img src="Imagenes/logo.jpeg" alt="Neko Sushi Rolls" class="hero-logo"/>
-    <h1 class="hero-title">El Mejor Sushi<br/><span>de Antofagasta</span></h1>
-    <p class="hero-subtitle">Rolls Premium hechos con amor 🐱🌸 Delivery o Retiro en Local</p>
-    <div class="hero-actions">
-      <a href="#menu" class="btn-primary" id="btnHeroOrder">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4H6z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-        Ver Menú y Pedir
+<!-- =========  NAVBAR  ========= -->
+<header class="main-header">
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#inicio" class="nav-logo">
+        <span class="logo-text">NEKO<span>SUSHI</span></span>
       </a>
-      <a href="https://wa.me/56935220586" target="_blank" class="btn-secondary">
-        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Contactar WhatsApp
-      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="javascript:void(0)" onclick="showCategorySection('promociones');closeMenu()">Promos</a></li>
+        <li><a href="javascript:void(0)" onclick="showCategorySection('menu-premium');closeMenu()">Sushi Premium</a></li>
+        <li><a href="javascript:void(0)" onclick="showCategorySection('menu-tortas');closeMenu()">Tortas</a></li>
+        <li><a href="javascript:void(0)" onclick="showCategorySection('menu-handrolls');closeMenu()">Handrolls</a></li>
+        <li><a href="javascript:void(0)" onclick="showCategorySection('menu-boxes');closeMenu()">Boxes</a></li>
+        <li><a href="javascript:void(0)" onclick="document.getElementById('ubicacion').scrollIntoView({behavior:'smooth'});closeMenu()">Ubicación</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="cart-btn" id="cartBtn" aria-label="Carrito de compras">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menú">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- =========  CATEGORY GRID  ========= -->
+<section class="categories-section" id="inicio">
+  <div class="categories-grid">
+    <div class="category-card" onclick="showCategorySection('promociones')">
+      <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c" class="category-img" alt="Promociones">
+      <h3>Promos</h3>
+      <span>Desde $9.990</span>
+      <div class="ver-menu">Ver Menú</div>
+    </div>
+    <div class="category-card" onclick="showCategorySection('menu-premium')">
+      <img src="https://images.unsplash.com/photo-1553621042-f6e147245754" class="category-img" alt="Sushi Premium">
+      <h3>Sushi Premium</h3>
+      <span>Roles Únicos</span>
+      <div class="ver-menu">Ver Menú</div>
+    </div>
+    <div class="category-card" onclick="showCategorySection('menu-tortas')">
+      <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252" class="category-img" alt="Tortas Sushi">
+      <h3>Tortas Sushi</h3>
+      <span>Desde $30.000</span>
+      <div class="ver-menu">Ver Menú</div>
+    </div>
+    <div class="category-card" onclick="showCategorySection('menu-handrolls')">
+      <img src="https://images.unsplash.com/photo-1617196034183-421b4917c92d" class="category-img" alt="Hand Rolls">
+      <h3>Hand Rolls</h3>
+      <span>Promos Diarias</span>
+      <div class="ver-menu">Ver Menú</div>
+    </div>
+    <div class="category-card" onclick="showCategorySection('menu-boxes')">
+      <img src="https://images.unsplash.com/photo-1583623025817-d180a2221d0a" class="category-img" alt="Boxes">
+      <h3>Boxes</h3>
+      <span>Desde $20.000</span>
+      <div class="ver-menu">Ver Menú</div>
     </div>
   </div>
-  <div class="hero-scroll-hint">
-    <span>Desliza para ver más</span>
-    <div class="scroll-arrow"></div>
+</section>
+
+<!-- =========  BOXES  ========= -->
+<section class="section menu-section" id="menu-boxes" style="display:none">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">📦 Combos Especiales</span>
+      <h2>Neko Boxes</h2>
+      <p>La experiencia completa en una caja.</p>
+    </div>
+    <div class="boxes-grid">
+
+      <!-- BOX 1: PapaRolls -->
+      <div class="box-card">
+        <div class="box-img-wrap">
+          <img src="https://images.unsplash.com/photo-1617196034183-421b4917c92d?w=700" class="box-img" alt="Neko PapaRolls">
+          <span class="box-price-tag">$20.000</span>
+        </div>
+        <div class="box-body">
+          <h3 class="box-title">🍟 Neko PapaRolls</h3>
+          <ul class="box-includes">
+            <li>🍣 40 piezas de sushi</li>
+            <li>🍟 Papas fritas + Topping</li>
+            <li>🥤 1 Bebida 1.5lt</li>
+          </ul>
+          <div class="box-topping">
+            <label class="topping-label" for="topping-papa">✨ Elige tu Topping:</label>
+            <select id="topping-papa" class="box-select">
+              <option value="Sin topping">-- Seleccionar --</option>
+              <option value="Salchichas">Salchichas</option>
+              <option value="Chorizo">Chorizo</option>
+              <option value="Albondigas">Albondigas</option>
+              <option value="Champiñon">Champiñon</option>
+              <option value="Carne bolls">Carne bolls</option>
+              <option value="Chiss pop pollo">Chiss pop pollo</option>
+            </select>
+          </div>
+          <button class="btn-box-add" data-name="Box Neko PapaRolls" data-price="20000">
+            Agregar al carrito
+          </button>
+        </div>
+      </div>
+
+      <!-- BOX 2: NekoFamily -->
+      <div class="box-card">
+        <div class="box-img-wrap">
+          <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=700" class="box-img" alt="Neko Family">
+          <span class="box-price-tag">$20.000</span>
+        </div>
+        <div class="box-body">
+          <h3 class="box-title">👨‍👩‍👧 Box NekoFamily</h3>
+          <ul class="box-includes">
+            <li>🍣 30 piezas de sushi</li>
+            <li>🍟 Salchipapas</li>
+            <li>🥟 4 Empanadas</li>
+            <li>🧀 4 Dedos de queso</li>
+            <li>🥤 1 Bebida 1.5lt</li>
+          </ul>
+          <button class="btn-box-add" data-name="Box NekoFamily" data-price="20000">
+            Agregar al carrito
+          </button>
+        </div>
+      </div>
+
+      <!-- BOX 3: NekoTripleMix -->
+      <div class="box-card">
+        <div class="box-img-wrap">
+          <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?w=700" class="box-img" alt="Neko Triple Mix">
+          <span class="box-price-tag">$20.000</span>
+        </div>
+        <div class="box-body">
+          <h3 class="box-title">🍕 Box NekoTripleMix</h3>
+          <ul class="box-includes">
+            <li>🍣 20 piezas de sushi</li>
+            <li>🍟 Papas fritas + Topping</li>
+            <li>🍕 3 Mini pizza pepperoni</li>
+            <li>🍕 3 Mini pizza napolitana</li>
+            <li>🥤 1 Bebida 1.5lt</li>
+          </ul>
+          <div class="box-topping">
+            <label class="topping-label" for="topping-triple">✨ Elige tu Topping:</label>
+            <select id="topping-triple" class="box-select">
+              <option value="Sin topping">-- Seleccionar --</option>
+              <option value="Salchichas">Salchichas</option>
+              <option value="Chorizo">Chorizo</option>
+              <option value="Albondigas">Albondigas</option>
+              <option value="Champiñon">Champiñon</option>
+              <option value="Carne bolls">Carne bolls</option>
+              <option value="Chiss pop pollo">Chiss pop pollo</option>
+            </select>
+          </div>
+          <button class="btn-box-add" data-name="Box NekoTripleMix" data-price="20000">
+            Agregar al carrito
+          </button>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
 <!-- =========  PROMOCIONES  ========= -->
-<section class="section promos-section" id="promociones">
+<section class="section menu-section promos-section" id="promociones" style="display:none">
   <div class="container">
     <div class="section-header">
-      <span class="section-badge">🌸 Ofertas Especiales</span>
-      <h2>Promociones</h2>
-      <p>¡No te pierdas nuestras increíbles promos!</p>
+      <span class="section-badge">🔥 Imperdibles</span>
+      <h2>Nuestras Promociones</h2>
     </div>
-    <div class="promos-grid" id="promosGrid">
-
-      <!-- Promo Precios por Piezas -->
-      <div class="promo-card featured-card">
-        <div class="promo-img-wrap">
-          <img src="Imagenes/WhatsApp Image 2026-03-11 at 10.26.26.jpeg" alt="Promociones por Piezas" loading="lazy"/>
-          <span class="promo-badge">🔥 Más vendido</span>
-        </div>
-        <div class="promo-body">
-          <h3>Promociones por Cantidad</h3>
-          <div class="price-table" id="qtyPromoTable">
-            <div class="price-row" data-qty="30" data-price="13000"><span>30 Piezas</span><strong>$13.000</strong><button class="btn-add-table">+</button></div>
-            <div class="price-row" data-qty="40" data-price="15000"><span>40 Piezas</span><strong>$15.000</strong><button class="btn-add-table">+</button></div>
-            <div class="price-row" data-qty="50" data-price="18000"><span>50 Piezas</span><strong>$18.000</strong><button class="btn-add-table">+</button></div>
-            <div class="price-row" data-qty="60" data-price="21000"><span>60 Piezas</span><strong>$21.000</strong><button class="btn-add-table">+</button></div>
-            <div class="price-row" data-qty="70" data-price="24000"><span>70 Piezas</span><strong>$24.000</strong><button class="btn-add-table">+</button></div>
-            <div class="price-row" data-qty="80" data-price="27000"><span>80 Piezas</span><strong>$27.000</strong><button class="btn-add-table">+</button></div>
-            <div class="price-row" data-qty="90" data-price="30000"><span>90 Piezas</span><strong>$30.000</strong><button class="btn-add-table">+</button></div>
-            <div class="price-row highlight" data-qty="100" data-price="33000"><span>100 Piezas</span><strong>$33.000</strong><button class="btn-add-table">+</button></div>
-          </div>
-          <p class="promo-tip" style="font-size: 0.8rem; color: var(--text-soft); margin-top: 0.5rem;">Selecciona la cantidad que prefieras arriba 👆</p>
-        </div>
+    <div class="product-grid" id="promosGrid">
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=600" class="product-img" alt="Promo 30">
+        <h4>Promo 30 Piezas</h4>
+        <span class="product-price">$13.000</span>
+        <button class="btn-select btn-add-promo" data-qty="30" data-rolls="3" data-price="13000">Seleccionar opciones</button>
       </div>
-
-      <!-- Promo del Día -->
-      <div class="promo-card">
-        <div class="promo-img-wrap">
-          <img src="Imagenes/WhatsApp Image 2026-03-11 at 10.32.58.jpeg" alt="Promoción del Día" loading="lazy"/>
-          <span class="promo-badge hot">¡Hoy!</span>
-        </div>
-        <div class="promo-body">
-          <h3>Promoción del Día</h3>
-          <p>40 Piezas Mixtas o Todo Panco + 1 Bebida 1.5 Lt</p>
-          <ul class="promo-list">
-            <li>1 Pollo queso cebollín</li>
-            <li>1 Pollo queso palta</li>
-            <li>1 Carne palta cebollín</li>
-            <li>1 Camarón queso cebollín</li>
-          </ul>
-          <div class="promo-price">$16.000</div>
-          <button class="btn-add-cart" data-name="Promo del Día 40 Piezas" data-price="16000">+ Agregar al Carrito</button>
-        </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?w=600" class="product-img" alt="Promo 40">
+        <h4>Promo 40 Piezas</h4>
+        <span class="product-price">$15.000</span>
+        <button class="btn-select btn-add-promo" data-qty="40" data-rolls="4" data-price="15000">Seleccionar opciones</button>
       </div>
-
-      <!-- Promo 30 Piezas Mixtas -->
-      <div class="promo-card">
-        <div class="promo-img-wrap">
-          <img src="Imagenes/WhatsApp Image 2026-03-11 at 10.33.00.jpeg" alt="Promo 30 Piezas Mixtas" loading="lazy"/>
-        </div>
-        <div class="promo-body">
-          <h3>Promoción del Día</h3>
-          <p>30 Piezas Mixtas + 3 Gyosas de Pollo + 3 Bolitas</p>
-          <div class="promo-price">$15.000</div>
-          <button class="btn-add-cart" data-name="Promo 30 Piezas + Gyosas + Bolitas" data-price="15000">+ Agregar al Carrito</button>
-        </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=600" class="product-img" alt="Promo 50">
+        <h4>Promo 50 Piezas</h4>
+        <span class="product-price">$18.000</span>
+        <button class="btn-select btn-add-promo" data-qty="50" data-rolls="5" data-price="18000">Seleccionar opciones</button>
       </div>
-
-      <!-- Promo 100 Piezas -->
-      <div class="promo-card">
-        <div class="promo-img-wrap">
-          <img src="Imagenes/WhatsApp Image 2026-03-11 at 10.32.59.jpeg" alt="100 Piezas Imperdible" loading="lazy"/>
-          <span class="promo-badge">💥 Imperdible</span>
-        </div>
-        <div class="promo-body">
-          <h3>¡Promoción Imperdible!</h3>
-          <p>100 Piezas Todo Panco + 1 Bebida incluida</p>
-          <div class="promo-price">$30.000</div>
-          <button class="btn-add-cart" data-name="Promo Imperdible 100 Piezas + Bebida" data-price="30000">+ Agregar al Carrito</button>
-        </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1617196034183-421b4917c92d?w=600" class="product-img" alt="Promo 60">
+        <h4>Promo 60 Piezas</h4>
+        <span class="product-price">$21.000</span>
+        <button class="btn-select btn-add-promo" data-qty="60" data-rolls="6" data-price="21000">Seleccionar opciones</button>
       </div>
-
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1583623025817-d180a2221d0a?w=600" class="product-img" alt="Promo 70">
+        <h4>Promo 70 Piezas</h4>
+        <span class="product-price">$24.000</span>
+        <button class="btn-select btn-add-promo" data-qty="70" data-rolls="7" data-price="24000">Seleccionar opciones</button>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1512132411229-c30391241dd8?w=600" class="product-img" alt="Promo 80">
+        <h4>Promo 80 Piezas</h4>
+        <span class="product-price">$27.000</span>
+        <button class="btn-select btn-add-promo" data-qty="80" data-rolls="8" data-price="27000">Seleccionar opciones</button>
+      </div>
+      <div class="product-card">
+        <img src="https://wallpapers.com/images/hd/elegant-sushi-plating-3l53ob6dvwtg796g.jpg" class="product-img" alt="Promo 90">
+        <h4>Promo 90 Piezas</h4>
+        <span class="product-price">$30.000</span>
+        <button class="btn-select btn-add-promo" data-qty="90" data-rolls="9" data-price="30000">Seleccionar opciones</button>
+      </div>
+      <div class="product-card" style="border: 2px solid var(--primary);">
+        <span class="promo-badge">🔥 Más Popular</span>
+        <img src="https://img.freepik.com/premium-photo/sushi-types-arranged-dark_961875-93378.jpg" class="product-img" alt="Promo 100">
+        <h4>Promo 100 Piezas</h4>
+        <span class="product-price">$35.000</span>
+        <button class="btn-select btn-add-promo" data-qty="100" data-rolls="10" data-price="35000">Seleccionar opciones</button>
+      </div>
     </div>
   </div>
 </section>
 
 
-<!-- =========  MENÚ  ========= -->
-<section class="section menu-section" id="menu">
+<!-- =========  SUSHI PREMIUM (Neko 01-15)  ========= -->
+<section class="section menu-section" id="menu-premium" style="display:none">
   <div class="container">
     <div class="section-header">
-      <span class="section-badge">🍣 Nuestra Carta</span>
-      <h2>Menú Completo</h2>
-      <p>Elige tus rolls favoritos y personalízalos</p>
+      <span class="section-badge">💎 Neko Selection</span>
+      <h2>Sushi Premium</h2>
     </div>
-
-    <!-- Imagen de Carta -->
-    <div class="menu-images">
-      <img src="Imagenes/WhatsApp Image 2026-03-11 at 10.25.54.jpeg" alt="Carta Neko Sushi Rolls" class="menu-img-full" loading="lazy"/>
-      <img src="Imagenes/WhatsApp Image 2026-03-11 at 10.28.11.jpeg" alt="Menú Premium Neko" class="menu-img-full" loading="lazy"/>
-    </div>
-
-    <!-- Tabs del Menú -->
-    <div class="menu-tabs">
-      <button class="tab-btn" data-tab="boxes">📦 Boxes Especiales</button>
-      <button class="tab-btn" data-tab="tortas">🎂 Tortas Sushi</button>
-      <button class="tab-btn active" data-tab="premium">🌟 Premium (Neko 01-15)</button>
-      <button class="tab-btn" data-tab="clasico">🍱 Clásicos</button>
-      <button class="tab-btn" data-tab="handrolls">🌯 Handrolls</button>
-      <button class="tab-btn" data-tab="extras">✨ Extras</button>
-    </div>
-
-
-
-    <!-- Boxes -->
-    <div class="tab-content" id="tab-boxes">
-      <div class="menu-grid">
-        <div class="menu-card" data-name="Box Neko Paparolls (40p + Papas + Bebida)" data-price="20000">
-          <div class="menu-card-header"><span class="menu-code">PAPAROLLS</span><span class="menu-price">$20.000</span></div>
-          <p>40 Piezas + Papas Fritas + Topping + Bebida 1.5 Lt</p>
-          <button class="btn-add-cart-sm">+ Agregar</button>
-        </div>
-        <div class="menu-card" data-name="Box Nekofamily (30p + Salchipapas + 4 Empanadas + 4 Dedos + Bebida)" data-price="20000">
-          <div class="menu-card-header"><span class="menu-code">NEKOFAMILY</span><span class="menu-price">$20.000</span></div>
-          <p>30 Piezas + Salchipapas + 4 Empanadas + 4 Dedos + Bebida 1.5 Lt</p>
-          <button class="btn-add-cart-sm">+ Agregar</button>
-        </div>
-        <div class="menu-card" data-name="Box Nekotriplemix (20p + Papas + 6 Mini Pizzas + Bebida)" data-price="20000">
-          <div class="menu-card-header"><span class="menu-code">TRIPLEMIX</span><span class="menu-price">$20.000</span></div>
-          <p>20 Piezas + Papas Fritas + 6 Mini Pizzas + Bebida 1.5 Lt</p>
-          <button class="btn-add-cart-sm">+ Agregar</button>
-        </div>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1553621042-f6e147245754" class="product-img" alt="Neko 01">
+        <h4>Neko 01</h4>
+        <p class="product-desc">Pollo, queso, palta, palmito</p>
+        <span class="product-price">$4.500</span>
+        <button class="btn-select btn-add-cart" data-name="Neko 01" data-price="4500">Añadir al carrito</button>
       </div>
-    </div>
-
-    <!-- Tortas Sushi -->
-    <div class="tab-content" id="tab-tortas">
-      <div class="menu-grid">
-        <div class="menu-card" data-name="Torta Sushi 50 Piezas" data-price="30000">
-          <div class="menu-card-header"><span>50 Piezas</span><span class="menu-price">$30.000</span></div>
-          <button class="btn-add-cart-sm">+ Agregar</button>
-        </div>
-        <div class="menu-card" data-name="Torta Sushi 80 Piezas" data-price="35000">
-          <div class="menu-card-header"><span>80 Piezas</span><span class="menu-price">$35.000</span></div>
-          <button class="btn-add-cart-sm">+ Agregar</button>
-        </div>
-        <div class="menu-card" data-name="Torta Sushi 100 Piezas" data-price="40000">
-          <div class="menu-card-header"><span>100 Piezas</span><span class="menu-price">$40.000</span></div>
-          <button class="btn-add-cart-sm">+ Agregar</button>
-        </div>
-        <div class="menu-card" data-name="Torta Sushi 120 Piezas" data-price="46000">
-          <div class="menu-card-header"><span>120 Piezas</span><span class="menu-price">$46.000</span></div>
-          <button class="btn-add-cart-sm">+ Agregar</button>
-        </div>
-        <div class="menu-card" data-name="Torta Sushi 150 Piezas" data-price="55000">
-          <div class="menu-card-header"><span>150 Piezas</span><span class="menu-price">$55.000</span></div>
-          <button class="btn-add-cart-sm">+ Agregar</button>
-        </div>
-        <div class="menu-card" data-name="Torta Sushi 200 Piezas" data-price="73000">
-          <div class="menu-card-header"><span>200 Piezas</span><span class="menu-price">$73.000</span></div>
-          <button class="btn-add-cart-sm">+ Agregar</button>
-        </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c" class="product-img" alt="Neko 02">
+        <h4>Neko 02</h4>
+        <p class="product-desc">Pollo, camaron, queso, cebollin</p>
+        <span class="product-price">$5.200</span>
+        <button class="btn-select btn-add-cart" data-name="Neko 02" data-price="5200">Añadir al carrito</button>
       </div>
-    </div>
-
-    <!-- Handrolls -->
-    <div class="tab-content" id="tab-handrolls">
-      <div class="section-header" style="margin-bottom:1rem">
-        <h3 style="color:var(--orange)">Handrolls Premium</h3>
-        <p>1 Proteína + 2 Ingredientes a elección</p>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252" class="product-img" alt="Neko 03">
+        <h4>Neko 03</h4>
+        <p class="product-desc">Pollo, champiñón, queso, pepino</p>
+        <span class="product-price">$4.700</span>
+        <button class="btn-select btn-add-cart" data-name="Neko 03" data-price="4700">Añadir al carrito</button>
       </div>
-      <div class="menu-grid">
-        <div class="menu-card" data-name="1 Handroll Premium" data-price="4000">
-          <div class="menu-card-header"><span>1 Unidad</span><span class="menu-price">$4.000</span></div>
-          <button class="btn-add-cart-sm">+ Agregar</button>
-        </div>
-        <div class="menu-card" data-name="3 Handrolls Premium" data-price="9000">
-          <div class="menu-card-header"><span>3 Unidades</span><span class="menu-price">$9.000</span></div>
-          <button class="btn-add-cart-sm">+ Agregar</button>
-        </div>
-        <div class="menu-card" data-name="4 Handrolls Premium" data-price="12000">
-          <div class="menu-card-header"><span>4 Unidades</span><span class="menu-price">$12.000</span></div>
-          <button class="btn-add-cart-sm">+ Agregar</button>
-        </div>
-        <div class="menu-card" data-name="10 Handrolls Premium (MegaPromo)" data-price="30000">
-          <div class="menu-card-header"><span>10 Unidades</span><span class="menu-price">$30.000</span></div>
-          <button class="btn-add-cart-sm">+ Agregar</button>
-        </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1583623025817-d180a2221d0a" class="product-img" alt="Neko 04">
+        <h4>Neko 04</h4>
+        <p class="product-desc">Pollo, carne, queso, palta</p>
+        <span class="product-price">$5.300</span>
+        <button class="btn-select btn-add-cart" data-name="Neko 04" data-price="5300">Añadir al carrito</button>
       </div>
-    </div>
-
-    <!-- Premium -->
-    <div class="tab-content active" id="tab-premium">
-      <div class="menu-grid">
-        <div class="menu-card" data-name="NEKO 01 – Pollo queso palta palmito" data-price="4500">
-          <div class="menu-card-header"><span class="menu-code">NEKO 01</span><span class="menu-price">$4.500</span></div>
-          <p>Pollo queso palta palmito</p>
-          <button class="btn-add-cart-sm">+ Agregar</button>
-        </div>
-        <div class="menu-card" data-name="NEKO 02 – Pollo camarón queso cebollín" data-price="5200">
-          <div class="menu-card-header"><span class="menu-code">NEKO 02</span><span class="menu-price">$5.200</span></div>
-          <p>Pollo camarón queso cebollín</p>
-          <button class="btn-add-cart-sm">+ Agregar</button>
-        </div>
-        <div class="menu-card" data-name="NEKO 03 – Pollo champiñón queso pepino" data-price="4700">
-          <div class="menu-card-header"><span class="menu-code">NEKO 03</span><span class="menu-price">$4.700</span></div>
-          <p>Pollo champiñón queso pepino</p>
-          <button class="btn-add-cart-sm">+ Agregar</button>
-        </div>
-        <div class="menu-card" data-name="NEKO 04 – Pollo carne queso palta" data-price="5300">
-          <div class="menu-card-header"><span class="menu-code">NEKO 04</span><span class="menu-price">$5.300</span></div>
-          <p>Pollo carne queso palta</p>
-          <button class="btn-add-cart-sm">+ Agregar</button>
-        </div>
-        <div class="menu-card" data-name="NEKO 05 – Carne queso morrón palta" data-price="4500">
-          <div class="menu-card-header"><span class="menu-code">NEKO 05</span><span class="menu-price">$4.500</span></div>
-          <p>Carne queso morrón palta</p>
-          <button class="btn-add-cart-sm">+ Agregar</button>
-        </div>
-        <div class="menu-card" data-name="NEKO 06 – Carne queso champiñón cebollín" data-price="4800">
-          <div class="menu-card-header"><span class="menu-code">NEKO 06</span><span class="menu-price">$4.800</span></div>
-          <p>Carne queso champiñón cebollín</p>
-          <button class="btn-add-cart-sm">+ Agregar</button>
-        </div>
-        <div class="menu-card" data-name="NEKO 07 – Carne palmito queso morrón" data-price="4800">
-          <div class="menu-card-header"><span class="menu-code">NEKO 07</span><span class="menu-price">$4.800</span></div>
-          <p>Carne palmito queso morrón</p>
-          <button class="btn-add-cart-sm">+ Agregar</button>
-        </div>
-        <div class="menu-card" data-name="NEKO 08 – Carne queso pepino zanahoria" data-price="4200">
-          <div class="menu-card-header"><span class="menu-code">NEKO 08</span><span class="menu-price">$4.200</span></div>
-          <p>Carne queso pepino zanahoria</p>
-          <button class="btn-add-cart-sm">+ Agregar</button>
-        </div>
-        <div class="menu-card" data-name="NEKO 09 – Kanikama queso palta cebollín" data-price="3800">
-          <div class="menu-card-header"><span class="menu-code">NEKO 09</span><span class="menu-price">$3.800</span></div>
-          <p>Kanikama queso palta cebollín</p>
-          <button class="btn-add-cart-sm">+ Agregar</button>
-        </div>
-        <div class="menu-card" data-name="NEKO 10 – Kanikama queso palmito morrón" data-price="4000">
-          <div class="menu-card-header"><span class="menu-code">NEKO 10</span><span class="menu-price">$4.000</span></div>
-          <p>Kanikama queso palmito morrón</p>
-          <button class="btn-add-cart-sm">+ Agregar</button>
-        </div>
-        <div class="menu-card" data-name="NEKO 11 – Salmón queso palta cebollín" data-price="4500">
-          <div class="menu-card-header"><span class="menu-code">NEKO 11</span><span class="menu-price">$4.500</span></div>
-          <p>Salmón queso palta cebollín</p>
-          <button class="btn-add-cart-sm">+ Agregar</button>
-        </div>
-        <div class="menu-card salmon" data-name="NEKO 12 – Salmón mango queso palta" data-price="5800">
-          <div class="menu-card-header"><span class="menu-code">NEKO 12</span><span class="menu-price">$5.800</span></div>
-          <p>Salmón mango queso palta</p>
-          <button class="btn-add-cart-sm">+ Agregar</button>
-        </div>
-        <div class="menu-card salmon" data-name="NEKO 13 – Salmón palmito champiñón queso" data-price="5900">
-          <div class="menu-card-header"><span class="menu-code">NEKO 13</span><span class="menu-price">$5.900</span></div>
-          <p>Salmón palmito champiñón queso</p>
-          <button class="btn-add-cart-sm">+ Agregar</button>
-        </div>
-        <div class="menu-card salmon" data-name="NEKO 14 – Camarón palta queso cebollín" data-price="6200">
-          <div class="menu-card-header"><span class="menu-code">NEKO 14</span><span class="menu-price">$6.200</span></div>
-          <p>Camarón palta queso cebollín</p>
-          <button class="btn-add-cart-sm">+ Agregar</button>
-        </div>
-        <div class="menu-card salmon" data-name="NEKO 15 – Camarón mango queso palta" data-price="5400">
-          <div class="menu-card-header"><span class="menu-code">NEKO 15</span><span class="menu-price">$5.400</span></div>
-          <p>Camarón mango queso palta</p>
-          <button class="btn-add-cart-sm">+ Agregar</button>
-        </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1617196034183-421b4917c92d" class="product-img" alt="Neko 05">
+        <h4>Neko 05</h4>
+        <p class="product-desc">Carne, queso, morrón, palta</p>
+        <span class="product-price">$4.500</span>
+        <button class="btn-select btn-add-cart" data-name="Neko 05" data-price="4500">Añadir al carrito</button>
+      </div>
+      <div class="product-card">
+        <img src="https://tofuu.getjusto.com/orioneat-local/resized2/spEEmLSwP8vDa57w7-300-x.webp" class="product-img" alt="Neko 06">
+        <h4>Neko 06</h4>
+        <p class="product-desc">Carne, queso, champiñón, cebollín</p>
+        <span class="product-price">$4.800</span>
+        <button class="btn-select btn-add-cart" data-name="Neko 06" data-price="4800">Añadir al carrito</button>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1553621042-f6e147245754" class="product-img" alt="Neko 07">
+        <h4>Neko 07</h4>
+        <p class="product-desc">Carne, palmito, queso, morrón</p>
+        <span class="product-price">$4.200</span>
+        <button class="btn-select btn-add-cart" data-name="Neko 07" data-price="4200">Añadir al carrito</button>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c" class="product-img" alt="Neko 08">
+        <h4>Neko 08</h4>
+        <p class="product-desc">Carne, queso, pepino, zanahoria</p>
+        <span class="product-price">$3.800</span>
+        <button class="btn-select btn-add-cart" data-name="Neko 08" data-price="3800">Añadir al carrito</button>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252" class="product-img" alt="Neko 09">
+        <h4>Neko 09</h4>
+        <p class="product-desc">Kanikama, queso, palta, cebollín</p>
+        <span class="product-price">$4.000</span>
+        <button class="btn-select btn-add-cart" data-name="Neko 09" data-price="4000">Añadir al carrito</button>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1583623025817-d180a2221d0a" class="product-img" alt="Neko 10">
+        <h4>Neko 10</h4>
+        <p class="product-desc">Kanikama, queso, palmito, morrón</p>
+        <span class="product-price">$4.000</span>
+        <button class="btn-select btn-add-cart" data-name="Neko 10" data-price="4000">Añadir al carrito</button>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1617196034183-421b4917c92d" class="product-img" alt="Neko 11">
+        <h4>Neko 11</h4>
+        <p class="product-desc">Salmon, queso, palta, cebollin</p>
+        <span class="product-price">$4.500</span>
+        <button class="btn-select btn-add-cart" data-name="Neko 11" data-price="4500">Añadir al carrito</button>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1553621042-f6e147245754" class="product-img" alt="Neko 12">
+        <h4>Neko 12</h4>
+        <p class="product-desc">Salmon, mango, queso, palta</p>
+        <span class="product-price">$5.800</span>
+        <button class="btn-select btn-add-cart" data-name="Neko 12" data-price="5800">Añadir al carrito</button>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c" class="product-img" alt="Neko 13">
+        <h4>Neko 13</h4>
+        <p class="product-desc">Salmon, palmito, champiñón, queso</p>
+        <span class="product-price">$5.900</span>
+        <button class="btn-select btn-add-cart" data-name="Neko 13" data-price="5900">Añadir al carrito</button>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252" class="product-img" alt="Neko 14">
+        <h4>Neko 14</h4>
+        <p class="product-desc">Camarón, mango, queso, palta</p>
+        <span class="product-price">$5.400</span>
+        <button class="btn-select btn-add-cart" data-name="Neko 14" data-price="5400">Añadir al carrito</button>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1583623025817-d180a2221d0a" class="product-img" alt="Neko 15">
+        <h4>Neko 15</h4>
+        <p class="product-desc">Camarón, queso, morrón, pepino</p>
+        <span class="product-price">$5.600</span>
+        <button class="btn-select btn-add-cart" data-name="Neko 15" data-price="5600">Añadir al carrito</button>
       </div>
     </div>
-
-    <!-- Clásicos -->
-    <div class="tab-content" id="tab-clasico">
-      <div class="section-header" style="margin-bottom:1.5rem">
-        <h3 style="color:var(--orange)">Rellenos y Envolturas Clásicas</h3>
-        <p>Guía de ingredientes para tus selecciones</p>
-      </div>
-      <div class="clasicos-cols" style="margin-bottom: 3rem;">
-        <div class="clasicos-col">
-          <h4>🌮 Rellenos</h4>
-          <ul>
-            <li>Pollo queso palta</li>
-            <li>Camarón queso cebollín</li>
-            <li>Pollo queso pepino</li>
-            <li>Salmón queso champiñón</li>
-            <li>Pollo queso morrón</li>
-            <li>Palmito pepino cebollín</li>
-            <li>Camarón queso pepino</li>
-            <li>Pollo queso mango</li>
-            <li>Camarón palta cebollín</li>
-            <li>Pollo morrón cebollín</li>
-            <li>Salmón pepino cebollín</li>
-            <li>Palmito champiñón pepino</li>
-            <li>Pollo queso cebollín</li>
-            <li>Carne queso palta</li>
-            <li>Camarón palta morrón</li>
-            <li>Kanikama queso cebollín</li>
-            <li>Pollo palta cebollín</li>
-            <li>Carne queso champiñón</li>
-            <li>Camarón queso palta</li>
-            <li>Kanikama palta morrón</li>
-          </ul>
-        </div>
-        <div class="clasicos-col">
-          <h4>❄️ Envolturas Frías</h4>
-          <ul>
-            <li>Palta</li>
-            <li>Queso</li>
-            <li>Nori</li>
-            <li>Sésamo</li>
-            <li>Cebollín</li>
-            <li>Merquén</li>
-            <li>Mango <span class="extra">$1.000</span></li>
-            <li>Salmón <span class="extra">$1.000</span></li>
-          </ul>
-          <h4 style="margin-top:1.5rem">🔥 Envolturas Calientes</h4>
-          <ul>
-            <li>Panco</li>
-            <li>NoriPanco</li>
-            <li>PancoMerquén</li>
-            <li>Plátano Frito <span class="extra">$1.000</span></li>
-          </ul>
-          <h4 style="margin-top:1.5rem">🥣 Salsas</h4>
-          <ul>
-            <li>Soja</li>
-            <li>Teriyaki</li>
-            <li>Jengibre</li>
-            <li>Mango <span class="extra">$700</span></li>
-            <li>Maracuyá <span class="extra">$700</span></li>
-            <li>Acevichada <span class="extra">$700</span></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="section-header" style="margin-bottom:1.5rem">
-        <h3 style="color:var(--orange)">Arma tu Roll Personalizado</h3>
-        <p>Elige tu proteína, 2 ingredientes y envoltura</p>
-      </div>
-
-      <div class="builder-container">
-        <div class="builder-step">
-          <h4>1. Elige tu Proteína (1 opción)</h4>
-          <div class="builder-options" id="proteinOptions">
-            <button class="builder-opt" data-type="protein" data-value="Pollo">Pollo</button>
-            <button class="builder-opt" data-type="protein" data-value="Carne">Carne</button>
-            <button class="builder-opt" data-type="protein" data-value="Camarón">Camarón</button>
-            <button class="builder-opt" data-type="protein" data-value="Kanikama">Kanikama</button>
-            <button class="builder-opt" data-type="protein" data-value="Vegetariano">Vegetariano</button>
-          </div>
-        </div>
-        <div class="builder-step">
-          <h4>2. Elige 2 Ingredientes</h4>
-          <div class="builder-options" id="ingredientOptions">
-            <button class="builder-opt" data-type="ingredient" data-value="Queso">Queso</button>
-            <button class="builder-opt" data-type="ingredient" data-value="Palta">Palta</button>
-            <button class="builder-opt" data-type="ingredient" data-value="Cebollín">Cebollín</button>
-            <button class="builder-opt" data-type="ingredient" data-value="Morrón">Morrón</button>
-            <button class="builder-opt" data-type="ingredient" data-value="Pepino">Pepino</button>
-            <button class="builder-opt" data-type="ingredient" data-value="Champiñón">Champiñón</button>
-          </div>
-        </div>
-        <div class="builder-step">
-          <h4>3. Elige tu Envoltura</h4>
-          <div class="builder-options" id="wrapOptions">
-            <button class="builder-opt" data-type="wrap" data-value="Panco" data-extra="0">Panco (Gratis)</button>
-            <button class="builder-opt" data-type="wrap" data-value="Sésamo" data-extra="0">Sésamo (Gratis)</button>
-            <button class="builder-opt" data-type="wrap" data-value="Ciboulette" data-extra="0">Ciboulette (Gratis)</button>
-            <button class="builder-opt" data-type="wrap" data-value="Palta" data-extra="1000">Palta (+$1.000)</button>
-            <button class="builder-opt" data-type="wrap" data-value="Salmón" data-extra="1500">Salmón (+$1.500)</button>
-          </div>
-        </div>
-        <div class="builder-summary">
-          <div class="builder-price">Total: <strong id="builderPrice">$4.500</strong></div>
-          <button class="btn-primary" id="btnAddCustomRoll" style="width:100%">+ Agregar Roll Personalizado</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Extras -->
-    <div class="tab-content" id="tab-extras">
-      <div class="extras-grid">
-        <div class="extra-card">
-          <div class="extra-img-wrap">
-            <img src="Imagenes/WhatsApp Image 2026-03-11 at 10.39.44.jpeg" alt="Extra" loading="lazy"/>
-          </div>
-          <p>Complemento especial</p>
-        </div>
-        <div class="extra-card">
-          <div class="extra-img-wrap">
-            <img src="Imagenes/WhatsApp Image 2026-03-11 at 10.39.45.jpeg" alt="Acompañamiento" loading="lazy"/>
-          </div>
-          <p>Acompañamiento de temporada</p>
-        </div>
-        <div class="extra-card">
-          <div class="extra-img-wrap">
-            <img src="Imagenes/WhatsApp Image 2026-03-11 at 10.39.48.jpeg" alt="Extra especial" loading="lazy"/>
-          </div>
-          <p>Ingrediente premium</p>
-        </div>
-        <div class="extra-card">
-          <div class="extra-img-wrap">
-            <img src="Imagenes/WhatsApp Image 2026-03-11 at 10.39.49.jpeg" alt="Gyosas" loading="lazy"/>
-          </div>
-          <p>Gyosas</p>
-        </div>
-        <div class="extra-card">
-          <div class="extra-img-wrap">
-            <img src="Imagenes/WhatsApp Image 2026-03-11 at 10.39.50.jpeg" alt="Bolitas" loading="lazy"/>
-          </div>
-          <p>Bolitas de sushi</p>
-        </div>
-        <div class="extra-card">
-          <div class="extra-img-wrap">
-            <img src="Imagenes/WhatsApp Image 2026-03-11 at 10.39.51.jpeg" alt="Mix" loading="lazy"/>
-          </div>
-          <p>Mix especial</p>
-        </div>
-      </div>
-      <div style="text-align:center; margin-top:2rem;">
-        <p style="color:var(--text-soft)">¿Quieres consultar por extras adicionales?</p>
-        <a href="https://wa.me/56935220586" target="_blank" class="btn-primary" style="margin-top:1rem">Consultar por WhatsApp</a>
-      </div>
-    </div>
-
   </div>
 </section>
+
+<!-- =========  TORTAS SUSHI (Expanded)  ========= -->
+<section class="section menu-section" id="menu-tortas" style="display:none">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">🎂 Celebraciones</span>
+      <h2>Tortas Sushi</h2>
+      <p>Personaliza tu torta eligiendo tus rolls favoritos.</p>
+    </div>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252" class="product-img" alt="Torta 50">
+        <h4>Torta 50 Piezas</h4>
+        <span class="product-price">$30.000</span>
+        <button class="btn-select btn-add-promo" data-qty="50" data-rolls="5" data-price="30000">Armar Torta</button>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c" class="product-img" alt="Torta 80">
+        <h4>Torta 80 Piezas</h4>
+        <span class="product-price">$35.000</span>
+        <button class="btn-select btn-add-promo" data-qty="80" data-rolls="8" data-price="35000">Armar Torta</button>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1553621042-f6e147245754" class="product-img" alt="Torta 100">
+        <h4>Torta 100 Piezas</h4>
+        <span class="product-price">$40.000</span>
+        <button class="btn-select btn-add-promo" data-qty="100" data-rolls="10" data-price="40000">Armar Torta</button>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252" class="product-img" alt="Torta 120">
+        <h4>Torta 120 Piezas</h4>
+        <span class="product-price">$46.000</span>
+        <button class="btn-select btn-add-promo" data-qty="120" data-rolls="12" data-price="46000">Armar Torta</button>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c" class="product-img" alt="Torta 150">
+        <h4>Torta 150 Piezas</h4>
+        <span class="product-price">$55.000</span>
+        <button class="btn-select btn-add-promo" data-qty="150" data-rolls="15" data-price="55000">Armar Torta</button>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252" class="product-img" alt="Torta 170">
+        <h4>Torta 170 Piezas</h4>
+        <span class="product-price">$65.000</span>
+        <button class="btn-select btn-add-promo" data-qty="170" data-rolls="17" data-price="65000">Armar Torta</button>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1583623025817-d180a2221d0a" class="product-img" alt="Torta 200">
+        <h4>Torta 200 Piezas</h4>
+        <span class="product-price">$73.000</span>
+        <button class="btn-select btn-add-promo" data-qty="200" data-rolls="20" data-price="73000">Armar Torta</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========  HAND ROLLS (Full Promos)  ========= -->
+<section class="section menu-section" id="menu-handrolls" style="display:none">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">🌯 On the go</span>
+      <h2>Hand Rolls Special</h2>
+    </div>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="https://sushikitami.cl/wp-content/uploads/2023/07/SUSHI-1-4.png" class="product-img" alt="1 HR">
+        <h4>1 Handroll</h4>
+        <span class="product-price">$4.000</span>
+        <button class="btn-select btn-add-promo" data-qty="1" data-rolls="1" data-price="4000">Personalizar</button>
+      </div>
+      <div class="product-card">
+        <img src="https://kodamasushi.cl/wp-content/uploads/2021/02/3-handrolls.jpg" class="product-img" alt="3 HR">
+        <h4>3 Handrolls</h4>
+        <span class="product-price">$9.000</span>
+        <button class="btn-select btn-add-promo" data-qty="3" data-rolls="3" data-price="9000">Personalizar</button>
+      </div>
+      <div class="product-card">
+        <img src="https://tofuu.getjusto.com/orioneat-local/resized2/7ke9YxFkaRwwaBk9f-300-x.webp" class="product-img" alt="4 HR">
+        <h4>4 Handrolls</h4>
+        <span class="product-price">$12.000</span>
+        <button class="btn-select btn-add-promo" data-qty="4" data-rolls="4" data-price="12000">Personalizar</button>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1617196034183-421b4917c92d" class="product-img" alt="10 HR">
+        <h4>Mega Promo 10 HR</h4>
+        <span class="product-price">$30.000</span>
+        <button class="btn-select btn-add-promo" data-qty="10" data-rolls="10" data-price="30000">Personalizar</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- El formulario de pedido se movió al carrito -->
 
@@ -595,61 +559,34 @@
   </div>
 </section>
 
-<!-- =========  FOOTER  ========= -->
 <footer class="footer">
-  <div class="footer-container">
-    <div class="footer-brand">
-      <img src="Imagenes/logo.jpeg" alt="Neko Sushi Rolls" class="footer-logo"/>
-      <p>El mejor sushi de Antofagasta. Rolls premium hechos con los mejores ingredientes 🐱🌸</p>
-      <div class="footer-social">
-        <a href="https://wa.me/56935220586" target="_blank" class="social-btn wsp" aria-label="WhatsApp">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        </a>
-        <a href="https://www.instagram.com/nekosushirolls" target="_blank" class="social-btn ig" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </a>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="Imagenes/logo.jpeg" alt="Neko Sushi Rolls" class="footer-logo"/>
+        <p>El mejor sushi de Antofagasta. Calidad premium y frescura en cada pieza. 🍣🐱</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/nekosushirolls" target="_blank">📸 Instagram</a>
+          <a href="https://wa.me/56935220586" target="_blank">📱 WhatsApp</a>
+        </div>
+      </div>
+      <div class="footer-nav">
+        <h4>Carta</h4>
+        <a href="javascript:void(0)" onclick="showCategorySection('promociones')">Promociones</a>
+        <a href="javascript:void(0)" onclick="showCategorySection('menu-premium')">Sushi Premium</a>
+        <a href="javascript:void(0)" onclick="showCategorySection('menu-tortas')">Tortas Sushi</a>
+        <a href="javascript:void(0)" onclick="showCategorySection('menu-handrolls')">Handrolls</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Horarios</h4>
+        <p>🕒 Lun-Dom: 13:00 - 00:00</p>
+        <p>📍 Río Lauca 782, Antofagasta</p>
+        <p style="margin-top:1rem;"><a href="https://wa.me/56935220586" target="_blank" style="color: var(--primary);font-weight:800;">+56 9 3522 0586</a></p>
       </div>
     </div>
-
-    <div class="footer-col">
-      <h4>Menú Rápido</h4>
-      <ul>
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#promociones">Promociones</a></li>
-        <li><a href="#menu">Menú</a></li>
-        <li><a href="#pedido">Hacer Pedido</a></li>
-        <li><a href="#ubicacion">Ubicación</a></li>
-        <li><a href="#opiniones">Opiniones</a></li>
-      </ul>
+    <div class="footer-bottom">
+      &copy; 2026 Neko Sushi Rolls — Hecho con ❤️ en Antofagasta.
     </div>
-
-    <div class="footer-col">
-      <h4>Contacto</h4>
-      <ul>
-        <li>📍 Río Lauca 782, Antofagasta</li>
-        <li>📱 <a href="https://wa.me/56935220586">+56 9 3522 0586</a></li>
-        <li>📸 <a href="https://instagram.com/nekosushirolls" target="_blank">@nekosushirolls</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h4>Formas de Pago</h4>
-      <div class="footer-payments">
-        <span>💳 Débito</span>
-        <span>💵 Efectivo</span>
-        <span>📱 Transferencia</span>
-      </div>
-      <div class="footer-delivery-types" style="margin-top:1.5rem">
-        <h4>Entrega</h4>
-        <span>🚗 Delivery</span>
-        <span>🏠 Retiro en Local</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="footer-bottom">
-    <p>© 2026 Neko Sushi Rolls – Antofagasta. Todos los derechos reservados.</p>
-    <p>Hecho con 🧡 para los amantes del sushi</p>
   </div>
 </footer>
 
@@ -723,8 +660,50 @@
   </div>
 </div>
 
+<!-- =========  PROMO BUILDER MODAL  ========= -->
+<div class="builder-modal" id="promoBuilderModal">
+  <div class="builder-modal-overlay" id="builderOverlay"></div>
+  <div class="builder-modal-content">
+    <div class="builder-modal-header">
+      <h2 id="builderTitle">Arma tu Promoción</h2>
+      <button class="builder-modal-close" id="builderClose">✕</button>
+    </div>
+    
+    <div class="builder-split">
+      <!-- Left side: Image -->
+      <div class="builder-left">
+        <img id="builderPromoImg" src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c" alt="Promo Image">
+      </div>
+      
+      <!-- Right side: Selection -->
+      <div class="builder-right">
+        <div id="builderRollContainer">
+          <!-- Selection dropdowns will be injected here -->
+        </div>
+      </div>
+    </div>
+
+    <div class="builder-modal-footer">
+      <div class="builder-total-info">
+        <span id="builderItemsCount">0 / 3 Rolls seleccionados</span>
+        <strong id="builderTotalPrice">$0</strong>
+      </div>
+      <div style="display:flex; gap:1rem;">
+        <button class="btn-select" onclick="PromoBuilder.close()">SEGUIR ELIGIENDO</button>
+        <button class="btn-primary" id="btnConfirmPromo" disabled>AÑADIR AL CARRITO</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Toast Notification -->
 <div class="toast" id="toast">✅ Producto agregado al carrito</div>
+
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/56935220586" target="_blank" class="whatsapp-float" aria-label="Pedir por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span>Pedir Ahora</span>
+</a>
 
 <script src="app.js"></script>
 </body>
