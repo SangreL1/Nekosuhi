@@ -1,9 +1,27 @@
 const PROTEINS = ["Pollo", "Carne", "Camarón", "Kanikama", "Vegetariano", "Vegano"];
-const INGREDIENTS = ["Queso", "Palta", "Cebollín", "Morrón", "Pepino", "Champiñón"];
+const INGREDIENTS = ["Queso", "Palta", "Cebollín", "Morrón", "Pepino", "Champiñón", "Palmito"];
+
+const INGREDIENT_PRICES = {
+  "Champiñón": 500,
+  "Palmito": 500
+};
+
+const RESTRICTED_PROTEINS = ["Pollo", "Carne", "Camarón", "Kanikama"];
+const RESTRICTED_INGREDIENTS = ["Queso", "Palta", "Cebollín", "Morrón"];
+
 const WRAPS = [
   "Panco", "Queso", "Palta", "Sésamo", "Cebollín", "Nori", "Merquén", 
-  "Nori-Panco", "Panco Merquén", "Salmón", "Jamón Serrano", "Mango", "Plátano Frito"
+  "Nori-Panco", "Panco Merquén", "Salmón", "Jamón Serrano", "Mango", "Plátano Frito",
+  "Champiñón", "Palmito"
 ];
+
+const WRAP_PRICES = {
+  "Salmón": 1500,
+  "Jamón Serrano": 1500,
+  "Mango": 1000,
+  "Champiñón": 500,
+  "Palmito": 500
+};
 
 // ── STATE ───────────────────────────────────────────────────
 let cart = [];
@@ -19,17 +37,20 @@ const drawerTotal = document.getElementById('drawerTotal');
 // ── PROMO BUILDER ──────────────────────────────────────────
 const PromoBuilder = {
   active: false,
-  currentPromo: null, // { qty, rolls, price, name }
+  currentPromo: null, // { qty, rolls, price, name, restricted, customFee }
   selections: [], // [{ protein, ingredients: [], wrap }]
-  currentRollIndex: 0,
+  customizing: false,
 
   open(promo, imgUrl) {
     this.active = true;
     this.currentPromo = promo;
+    this.customizing = !promo.restricted; // For restricted promos, start with customizing = false (Fixed)
+    
     this.selections = Array.from({ length: promo.rolls }, () => ({
       protein: null,
       ingredients: [],
-      wrap: "Panco"
+      wrap: "Panco",
+      nori: "Con Nori"
     }));
 
     document.getElementById('promoBuilderModal').classList.add('open');
@@ -52,51 +73,112 @@ const PromoBuilder = {
     const confirmBtn = document.getElementById('btnConfirmPromo');
 
     let html = '';
-    this.selections.forEach((roll, idx) => {
+    
+    // Header for customization choice
+    if (this.currentPromo.restricted) {
       html += `
-        <div class="selection-row">
-          <h5>ROLL ${idx + 1}</h5>
-          
-          <div class="builder-protein">
-            <label>PROTEÍNA (Elige 1)</label>
-            <div class="ingredient-grid">
-              ${PROTEINS.map(p => `
-                <button class="btn-select ${roll.protein === p ? 'active' : ''}" 
-                  onclick="PromoBuilder.setProtein(${idx}, '${p}')">${p}</button>
-              `).join('')}
-            </div>
-          </div>
-
-          <div class="builder-ingredients">
-            <label>RELLENOS (Elige 2)</label>
-            <div class="ingredient-grid">
-              ${INGREDIENTS.map(i => `
-                <button class="btn-select ${roll.ingredients.includes(i) ? 'active' : ''}" 
-                  onclick="PromoBuilder.toggleIngredient(${idx}, '${i}')">${i}</button>
-              `).join('')}
-            </div>
-          </div>
-
-          <div class="builder-wrap">
-            <label>ENVOLTURA</label>
-            <select class="selection-select" onchange="PromoBuilder.setWrap(${idx}, this.value)">
-              ${WRAPS.map(w => `
-                <option value="${w}" ${roll.wrap === w ? 'selected' : ''}>${w}</option>
-              `).join('')}
-            </select>
+        <div class="custom-toggle-area" style="margin-bottom: 2rem; padding: 1.5rem; background: var(--dark); border-radius: 12px; border: 1px dashed var(--primary);">
+          <h4 style="margin-bottom: 0.5rem; font-weight: 800; color: var(--light);">¿CÓMO QUIERES TU PROMO?</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.2rem;">Las piezas de esta promo son fijas. Si deseas personalizarlas, se cobrará un adicional.</p>
+          <div style="display: flex; gap: 1rem;">
+            <button class="btn-select ${!this.customizing ? 'active' : ''}" onclick="PromoBuilder.setCustomizing(false)">COMBO FIJO (Estándar)</button>
+            <button class="btn-select ${this.customizing ? 'active' : ''}" onclick="PromoBuilder.setCustomizing(true)">PERSONALIZAR (+${formatPrice(this.currentPromo.customFee)})</button>
           </div>
         </div>
       `;
-    });
+    }
+
+    if (this.customizing) {
+      const pList = this.currentPromo.restricted ? RESTRICTED_PROTEINS : PROTEINS;
+      const iList = this.currentPromo.restricted ? RESTRICTED_INGREDIENTS : INGREDIENTS;
+
+      this.selections.forEach((roll, idx) => {
+        html += `
+          <div class="selection-row">
+            <h5>ROLL ${idx + 1}</h5>
+            <div class="builder-protein">
+              <label>PROTEÍNA (Elige 1)</label>
+              <div class="ingredient-grid">
+                ${pList.map(p => `
+                  <button class="btn-select ${roll.protein === p ? 'active' : ''}" 
+                    onclick="PromoBuilder.setProtein(${idx}, '${p}')">${p}</button>
+                `).join('')}
+              </div>
+            </div>
+            <div class="builder-ingredients">
+              <label>RELLENOS (Elige 2)</label>
+              <div class="ingredient-grid">
+                ${iList.map(i => `
+                  <button class="btn-select ${roll.ingredients.includes(i) ? 'active' : ''}" 
+                    onclick="PromoBuilder.toggleIngredient(${idx}, '${i}')">
+                    ${i} ${INGREDIENT_PRICES[i] ? '<br><small>(+' + formatPrice(INGREDIENT_PRICES[i]) + ')</small>' : ''}
+                  </button>
+                `).join('')}
+              </div>
+            </div>
+            <div class="builder-wrap">
+            <div style="display:flex; gap:0.5rem;">
+              <div style="flex:1">
+                <label>ENVOLTURA</label>
+                <select class="selection-select" onchange="PromoBuilder.setWrap(${idx}, this.value)">
+                  ${WRAPS.map(w => `
+                    <option value="${w}" ${roll.wrap === w ? 'selected' : ''}>${w} ${WRAP_PRICES[w] ? '(' + formatPrice(WRAP_PRICES[w]) + ')' : ''}</option>
+                  `).join('')}
+                </select>
+              </div>
+              <div style="flex:1">
+                <label>NORI</label>
+                <select class="selection-select" onchange="PromoBuilder.setNori(${idx}, this.value)">
+                  <option value="Con Nori" ${roll.nori === 'Con Nori' ? 'selected' : ''}>Con Nori</option>
+                  <option value="Sin Nori" ${roll.nori === 'Sin Nori' ? 'selected' : ''}>Sin Nori</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      });
+    } else {
+      html += `
+        <div style="text-align: center; padding: 3rem 0;">
+          <div style="font-size: 3rem; margin-bottom: 1rem;">🍱</div>
+          <h3 style="font-weight: 900;">COMBO ESTÁNDAR SELECCIONADO</h3>
+          <p style="color: #666;">Se agregarán los rellenos mixtos tradicionales de la casa.</p>
+        </div>
+      `;
+    }
 
     container.innerHTML = html;
 
     const completedRolls = this.selections.filter(s => s.protein && s.ingredients.length === 2).length;
-    const total = this.currentPromo.price;
+    let total = this.currentPromo.price;
+    
+    if (this.customizing) {
+      if (this.currentPromo.restricted) total += this.currentPromo.customFee;
+      // Add wrap surcharges
+      this.selections.forEach(s => {
+        if (WRAP_PRICES[s.wrap]) total += WRAP_PRICES[s.wrap];
+        // Add ingredient surcharges
+        s.ingredients.forEach(ing => {
+          if (INGREDIENT_PRICES[ing]) total += INGREDIENT_PRICES[ing];
+        });
+      });
+    }
 
-    itemCount.textContent = `${completedRolls} / ${this.currentPromo.rolls} Rolls listos`;
+    if (this.customizing) {
+      itemCount.textContent = `${completedRolls} / ${this.currentPromo.rolls} Rolls listos`;
+      confirmBtn.disabled = completedRolls < this.currentPromo.rolls;
+    } else {
+      itemCount.textContent = `Combo Fijo`;
+      confirmBtn.disabled = false;
+    }
+    
     totalPriceEl.textContent = formatPrice(total);
-    confirmBtn.disabled = completedRolls < this.currentPromo.rolls;
+  },
+
+  setCustomizing(val) {
+    this.customizing = val;
+    this.render();
   },
 
   setProtein(rollIdx, val) {
@@ -119,11 +201,35 @@ const PromoBuilder = {
     this.render();
   },
 
+  setNori(rollIdx, name) {
+    this.selections[rollIdx].nori = name;
+    this.render();
+  },
+
   confirm() {
-    const finalPrice = this.currentPromo.price;
-    const details = this.selections.map((s, idx) =>
-      `Roll ${idx + 1}: ${s.protein} + ${s.ingredients.join(' e ')} en ${s.wrap}`
-    ).join(' | ');
+    let finalPrice = this.currentPromo.price;
+    let details = 'Combo Estándar (Fijo)';
+    
+    if (this.customizing) {
+      if (this.currentPromo.restricted) finalPrice += this.currentPromo.customFee;
+      
+      // Add wrap surcharges to final price
+      this.selections.forEach(s => {
+        if (WRAP_PRICES[s.wrap]) finalPrice += WRAP_PRICES[s.wrap];
+        // Add ingredient surcharges to final price
+        s.ingredients.forEach(ing => {
+          if (INGREDIENT_PRICES[ing]) finalPrice += INGREDIENT_PRICES[ing];
+        });
+      });
+
+      details = this.selections.map((s, idx) =>
+        `Roll ${idx + 1}: ${s.protein} + ${s.ingredients.join(' e ')} en ${s.wrap} (${s.nori})`
+      ).join(' | ');
+    } else {
+      // Check if there's a global nori select in the promo card
+      const nori = document.querySelector('.nori-global-promo')?.value || 'Con Nori';
+      details += ` | ${nori}`;
+    }
 
     addToCart(this.currentPromo.name, finalPrice, { details });
     this.close();
@@ -286,11 +392,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add normal item
     if (e.target.classList.contains('btn-add-cart')) {
-      addToCart(e.target.dataset.name, e.target.dataset.price);
+      const card = e.target.closest('.product-card');
+      const nori = card.querySelector('.nori-select')?.value || 'Con Nori';
+      const wrap = card.querySelector('.wrap-select')?.value;
+      
+      let price = parseInt(e.target.dataset.price);
+      if (wrap && WRAP_PRICES[wrap]) {
+        price += WRAP_PRICES[wrap];
+      }
+
+      let details = `Nori: ${nori}`;
+      if (wrap) details = `Envuelto en ${wrap} | ${details}`;
+      
+      const existingDetails = e.target.dataset.details || '';
+      const finalDetails = existingDetails ? `${existingDetails} | ${details}` : details;
+      addToCart(e.target.dataset.name, price, { details: finalDetails });
     }
     if (e.target.classList.contains('btn-add-cart-sm')) {
       const card = e.target.closest('.menu-card');
-      addToCart(card.dataset.name, card.dataset.price);
+      const nori = card.querySelector('.nori-select')?.value || 'Con Nori';
+      const finalDetails = `Nori: ${nori}`;
+      addToCart(card.dataset.name, card.dataset.price, { details: finalDetails });
     }
 
     // Add Promo (Open Builder)
@@ -302,7 +424,9 @@ document.addEventListener('DOMContentLoaded', () => {
         qty: parseInt(promoBtn.dataset.qty),
         rolls: parseInt(promoBtn.dataset.rolls),
         price: parseInt(promoBtn.dataset.price),
-        name: `Promo ${promoBtn.dataset.qty} Piezas`
+        name: promoBtn.dataset.name || `Promo ${promoBtn.dataset.qty} Piezas`,
+        restricted: promoBtn.dataset.restricted === "true",
+        customFee: parseInt(promoBtn.dataset.customFee || 0)
       }, img);
     }
 
@@ -410,29 +534,48 @@ function closeMenu() {
   const navLinks = document.getElementById('navLinks');
   if (navLinks) navLinks.classList.remove('open');
 }
-
-// ── BOX ADD TO CART ──────────────────────────────────────────
+// ── BOXES ADD TO CART ───────────────────────────────────────
 document.addEventListener('click', (e) => {
-  const btn = e.target.closest('.btn-box-add');
-  if (!btn) return;
-  
-  const boxCard = btn.closest('.box-card');
-  const name = btn.dataset.name;
-  const price = parseInt(btn.dataset.price);
-  
-  // Get selected topping from dropdown
-  const select = boxCard.querySelector('.box-select');
-  const toppingValue = select ? select.value : null;
-  
-  let details = '';
-  if (toppingValue && toppingValue !== 'Sin topping') {
-    details = `Topping: ${toppingValue}`;
-  } else if (select) {
-    details = 'Sin topping seleccionado';
+  if (e.target.classList.contains('btn-box-add')) {
+    const card = e.target.closest('.box-card');
+    const topping = card.querySelector('.box-select')?.value || 'Sin topping';
+    const nori = card.querySelector('.nori-select')?.value || 'Con Nori';
+    const name = e.target.dataset.name;
+    const price = parseInt(e.target.dataset.price);
+    addToCart(name, price, { details: `Topping: ${topping} | Nori: ${nori}` });
   }
-  
-  // Use addToCart with correct metadata format
-  addToCart(name, price, details ? { details } : null);
+});
+
+// ── OFERTAS ADD TO CART ─────────────────────────────────────
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('.btn-add-offer-custom');
+  if (!btn) return;
+
+  const card = btn.closest('.product-card');
+  const name = card.dataset.name;
+  const price = parseInt(card.dataset.price);
+  const type = btn.dataset.type;
+
+  let finalPrice = price;
+  let details = '';
+  if (type === '20-mixtas') {
+    const f1 = card.querySelector('.fill-choice-1').value;
+    const w1 = card.querySelector('.wrap-choice-1').value;
+    const f2 = card.querySelector('.fill-choice-2').value;
+    const w2 = card.querySelector('.wrap-choice-2').value;
+    const nori = card.querySelector('.nori-select')?.value || 'Con Nori';
+    
+    // Add surcharges for both rolls
+    if (WRAP_PRICES[w1]) finalPrice += WRAP_PRICES[w1];
+    if (WRAP_PRICES[w2]) finalPrice += WRAP_PRICES[w2];
+
+    details = `Roll 1: ${f1} en ${w1} | Roll 2: ${f2} en ${w2} | ${nori}`;
+  } else if (type === '3-hr') {
+    const nori = card.querySelector('.nori-choice').value;
+    details = `Relleno Fijo (Pollo). ${nori}`;
+  }
+
+  addToCart(name, finalPrice, details ? { details } : null);
 });
 
 window.showCategorySection = showCategorySection;

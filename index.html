@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Neko Sushi Rolls – Antofagasta | Sushi Premium & Promociones</title>
-  <meta name="description" content="Neko Sushi Rolls Antofagasta. Sushi premium personalizado. Pide nuestras promociones y elige tus rellenos y envolturas favoritas."/>
+  <title>NEKOSUSHIROLLS – Antofagasta | Sushi Premium & Promociones</title>
+  <meta name="description" content="NEKOSUSHIROLLS Antofagasta. Sushi premium personalizado. Pide nuestras promociones y elige tus rellenos y envolturas favoritas."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet"/>
@@ -26,12 +26,14 @@
   <nav class="navbar" id="navbar">
     <div class="nav-container">
       <a href="#inicio" class="nav-logo">
-        <span class="logo-text">NEKO<span>SUSHI</span></span>
+        <span class="logo-text">NEKO<span>SUSHIROLLS</span></span>
       </a>
       <ul class="nav-links" id="navLinks">
+        <li><a href="javascript:void(0)" onclick="showCategorySection('menu-ofertas');closeMenu()">Ofertas</a></li>
+        <li><a href="javascript:void(0)" onclick="showCategorySection('menu-promo-bebida');closeMenu()">Promo + Bebida</a></li>
         <li><a href="javascript:void(0)" onclick="showCategorySection('promociones');closeMenu()">Promos</a></li>
         <li><a href="javascript:void(0)" onclick="showCategorySection('menu-premium');closeMenu()">Sushi Premium</a></li>
-        <li><a href="javascript:void(0)" onclick="showCategorySection('menu-tortas');closeMenu()">Tortas</a></li>
+        <li><a href="javascript:void(0)" onclick="showCategorySection('menu-bebidas');closeMenu()">Bebidas</a></li>
         <li><a href="javascript:void(0)" onclick="showCategorySection('menu-handrolls');closeMenu()">Handrolls</a></li>
         <li><a href="javascript:void(0)" onclick="showCategorySection('menu-boxes');closeMenu()">Boxes</a></li>
         <li><a href="javascript:void(0)" onclick="document.getElementById('ubicacion').scrollIntoView({behavior:'smooth'});closeMenu()">Ubicación</a></li>
@@ -52,6 +54,18 @@
 <!-- =========  CATEGORY GRID  ========= -->
 <section class="categories-section" id="inicio">
   <div class="categories-grid">
+    <div class="category-card" onclick="showCategorySection('menu-ofertas')">
+      <img src="https://wallpapers.com/images/hd/authentic-japanese-sushi-vkafpx610b21ytel.jpg" class="category-img" alt="Ofertas">
+      <h3>Ofertas</h3>
+      <span>Desde $10.000</span>
+      <div class="ver-menu">Ver Menú</div>
+    </div>
+    <div class="category-card" onclick="showCategorySection('menu-promo-bebida')">
+      <img src="https://images3.alphacoders.com/583/thumb-1920-583497.jpg" class="category-img" alt="Promo + Bebida">
+      <h3>Promo + Bebida</h3>
+      <span>Desde $13.000</span>
+      <div class="ver-menu">Ver Menú</div>
+    </div>
     <div class="category-card" onclick="showCategorySection('promociones')">
       <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c" class="category-img" alt="Promociones">
       <h3>Promos</h3>
@@ -64,10 +78,10 @@
       <span>Roles Únicos</span>
       <div class="ver-menu">Ver Menú</div>
     </div>
-    <div class="category-card" onclick="showCategorySection('menu-tortas')">
-      <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252" class="category-img" alt="Tortas Sushi">
-      <h3>Tortas Sushi</h3>
-      <span>Desde $30.000</span>
+    <div class="category-card" onclick="showCategorySection('menu-bebidas')">
+      <img src="https://cdn.pixabay.com/photo/2021/03/12/17/54/coca-cola-6090176_1280.jpg" class="category-img" alt="Bebidas">
+      <h3>Bebidas 1.75L</h3>
+      <span>$2.500 c/u</span>
       <div class="ver-menu">Ver Menú</div>
     </div>
     <div class="category-card" onclick="showCategorySection('menu-handrolls')">
@@ -81,6 +95,233 @@
       <h3>Boxes</h3>
       <span>Desde $20.000</span>
       <div class="ver-menu">Ver Menú</div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- =========  OFERTAS (FIXED)  ========= -->
+<section class="section menu-section" id="menu-ofertas" style="display:none">
+  <div class="container">
+    <div class="section-header">
+      <button class="back-to-menu" onclick="hideCategorySections()">← Volver al inicio</button>
+      <span class="section-badge">💸 Super Ahorro</span>
+      <h2>Zona de Ofertas</h2>
+      <p>Los mejores precios, combos fijos para disfrutar sin complicaciones.</p>
+    </div>
+
+    <div class="product-grid">
+      
+      <!-- Oferta 20 piezas -->
+      <div class="product-card" data-name="Oferta 20 Piezas Personalizada" data-price="10000">
+        <img src="https://media.istockphoto.com/id/470892032/photo/japanese-seafood-sushi-set.jpg?s=170667a&w=0&k=20&c=gHx2yiLrJcjZ9pcXwhlbkRBObiMt568_RJHLF_nT1EI=" class="product-img" alt="Oferta 20">
+        <h4>Oferta 20 Pzas Mixtas</h4>
+        <p class="product-desc">Personaliza tus 2 rolls (10 piezas c/u). Incluye 3 bolitas.</p>
+        
+        <div class="offer-selection">
+          <div class="offer-step" style="margin-bottom: 1rem; text-align: left;">
+            <label style="font-size: 0.7rem; font-weight: 800; color: var(--primary);">ROLL 1:</label>
+            <select class="box-select fill-choice-1" style="margin-bottom: 0.3rem;">
+              <option value="Pollo queso cebollin">Pollo Queso Cebollín</option>
+              <option value="Camarón queso cebollin">Camarón Queso Cebollín</option>
+              <option value="Carne queso cebollin">Carne Queso Cebollín</option>
+            </select>
+            <select class="box-select wrap-choice-1">
+              <option value="Panco">Enc. Panco</option>
+              <option value="Palta">Enc. Palta</option>
+              <option value="Salmón">Enc. Salmón (+$1.500)</option>
+              <option value="Jamón Serrano">Enc. Jamón Serrano (+$1.500)</option>
+              <option value="Mango">Enc. Mango (+$1.000)</option>
+              <option value="Champiñón">Enc. Champiñón (+$500)</option>
+              <option value="Palmito">Enc. Palmito (+$500)</option>
+              <option value="Nori-Merquen">Enc. Nori-Merquén</option>
+              <option value="Sesamo Panco Merken">Enc. Sésamo Panco Merq.</option>
+              <option value="Sesamo">Enc. Sésamo</option>
+            </select>
+          </div>
+          
+          <div class="offer-step" style="margin-bottom: 1rem; text-align: left;">
+            <label style="font-size: 0.7rem; font-weight: 800; color: var(--primary);">ROLL 2:</label>
+            <select class="box-select fill-choice-2" style="margin-bottom: 0.3rem;">
+              <option value="Camarón queso cebollin">Camarón Queso Cebollín</option>
+              <option value="Pollo queso cebollin">Pollo Queso Cebollín</option>
+              <option value="Carne queso cebollin">Carne Queso Cebollín</option>
+            </select>
+            <select class="box-select wrap-choice-2">
+              <option value="Sesamo">Enc. Sésamo</option>
+              <option value="Panco">Enc. Panco</option>
+              <option value="Palta">Enc. Palta</option>
+              <option value="Salmón">Enc. Salmón (+$1.500)</option>
+              <option value="Jamón Serrano">Enc. Jamón Serrano (+$1.500)</option>
+              <option value="Mango">Enc. Mango (+$1.000)</option>
+              <option value="Champiñón">Enc. Champiñón (+$500)</option>
+              <option value="Palmito">Enc. Palmito (+$500)</option>
+              <option value="Nori-Merquen">Enc. Nori-Merquén</option>
+              <option value="Sesamo Panco Merken">Enc. Sésamo Panco Merq.</option>
+            </select>
+          </div>
+
+          <select class="box-select nori-select" style="margin-top: 0.5rem; border-color: var(--primary);">
+            <option value="Con Nori">Con Nori</option>
+            <option value="Sin Nori">Sin Nori</option>
+          </select>
+        </div>
+        
+        <span class="product-price">$10.000</span>
+        <button class="btn-select btn-add-offer-custom" data-type="20-mixtas">Añadir al carrito</button>
+      </div>
+
+      <!-- Oferta 30 piezas todo panco -->
+      <div class="product-card">
+        <img src="https://images3.alphacoders.com/114/1146688.jpg" class="product-img" alt="Oferta 30 Panco">
+        <h4>30 Piezas Todo Panco</h4>
+        <p class="product-desc">Relleno Pollo, Queso, Palta. Combo Fijo.</p>
+        <select class="box-select nori-select" style="margin-bottom: 1rem;">
+          <option value="Con Nori">Con Nori</option>
+          <option value="Sin Nori">Sin Nori</option>
+        </select>
+        <span class="product-price">$11.900</span>
+        <button class="btn-select btn-add-cart" data-name="Oferta 30 Piezas Todo Panco" data-price="11900">Añadir al carrito</button>
+      </div>
+
+      <!-- Oferta 3 handrolls -->
+      <div class="product-card" data-name="Oferta 3 Handrolls + Pack" data-price="12000">
+        <img src="https://tse3.mm.bing.net/th/id/OIP.QRLiuW_D3p0HNiKo_yHNVgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" class="product-img" alt="Oferta 3 HR">
+        <h4>Pack 3 Handrolls</h4>
+        <p class="product-desc">Pollo Queso Cebollín + 3 Bolitas + Bebida 1.5L. <strong>Nori:</strong></p>
+        <div class="offer-selection">
+          <select class="box-select nori-choice">
+            <option value="Con Nori">Con Nori</option>
+            <option value="Sin Nori">Sin Nori</option>
+          </select>
+        </div>
+        <span class="product-price">$12.000</span>
+        <button class="btn-select btn-add-offer-custom" data-type="3-hr">Añadir al carrito</button>
+      </div>
+
+      <!-- Oferta 30 piezas + sides -->
+      <div class="product-card">
+        <img src="https://tse4.mm.bing.net/th/id/OIP.B4g-fSxTFwCnDDebGgT-DAHaFj?w=800&h=600&rs=1&pid=ImgDetMain&o=7&rm=3" class="product-img" alt="Oferta 30 especial">
+        <h4>Oferta 30 Piezas</h4>
+        <p class="product-desc">Pollo/Queso/Cebollín + Pollo/Queso/Palta. Incluye 3 Empanadas + 3 Bolitas.</p>
+        <select class="box-select nori-select" style="margin-bottom: 1rem;">
+          <option value="Con Nori">Con Nori</option>
+          <option value="Sin Nori">Sin Nori</option>
+        </select>
+        <span class="product-price">$15.000</span>
+        <button class="btn-select btn-add-cart" data-name="Oferta 30 Pzas + Empanadas + Bolitas" data-price="15000">Añadir al carrito</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =========  PROMO + BEBIDA  ========= -->
+<section class="section menu-section" id="menu-promo-bebida" style="display:none">
+  <div class="container">
+    
+    <div class="section-header">
+      <button class="back-to-menu" onclick="hideCategorySections()">← Volver al inicio</button>
+      <span class="section-badge">PACK EXCLUSIVO</span>
+      <h2>Promo + Bebida</h2>
+    </div>
+
+    <!-- Reverted Banner -->
+    <div class="special-promo-banner">
+      <div class="banner-bg" style="background-image: url('https://images3.alphacoders.com/583/thumb-1920-583497.jpg');"></div>
+      <div class="banner-overlay"></div>
+      <div class="banner-content">
+        <div class="banner-text">
+          <h1>Frescura & Sabor</h1>
+          <p>Disfruta de la mejor combinación de sushi con tu bebida favorita.</p>
+        </div>
+        <div class="banner-image-wrap">
+          <img src="https://tse2.mm.bing.net/th/id/OIP.2XI_PzNC86-kXd2CDU8DOgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Sushi Promo" class="floating-sushi">
+        </div>
+      </div>
+    </div>
+
+    <div class="product-grid">
+      
+      <!-- 30 piezas -->
+      <div class="product-card">
+        <img src="https://th.bing.com/th/id/R.f94353d775feca57fdbfdb7922350caa?rik=epMOYR2aZ93b2g&pid=ImgRaw&r=0" class="product-img" alt="Promo 30 + Bebida">
+        <h4>30 Piezas + Bebida</h4>
+        <p class="product-desc">Rellenos Mixtos: Pollo, Carne, Camarón. Mixtas o Todo Panco. + 1 Bebida 1.5lt Pepsi</p>
+        <select class="box-select nori-select nori-global-promo" style="margin-bottom: 1rem;">
+          <option value="Con Nori">Con Nori</option>
+          <option value="Sin Nori">Sin Nori</option>
+        </select>
+        <span class="product-price">$13.000</span>
+        <button class="btn-select btn-add-promo" data-name="Promo 30 Piezas + Bebida" data-qty="30" data-rolls="3" data-price="13000" data-restricted="true" data-custom-fee="2000">Seleccionar opciones</button>
+      </div>
+
+      <!-- 40 piezas -->
+      <div class="product-card">
+        <img src="https://img.freepik.com/premium-photo/large-delicious-juicy-sushi-rolls_985046-1161.jpg" class="product-img" alt="Promo 40 + Bebida">
+        <h4>40 Piezas + Bebida</h4>
+        <p class="product-desc">1 pollo queso cebollin, 1 pollo queso palta, 1 carne palta cebollin, 1 camaron queso cebollin. + 1 Bebida 1.5lt Pepsi</p>
+        <select class="box-select nori-select nori-global-promo" style="margin-bottom: 1rem;">
+          <option value="Con Nori">Con Nori</option>
+          <option value="Sin Nori">Sin Nori</option>
+        </select>
+        <span class="product-price">$16.000</span>
+        <button class="btn-select btn-add-promo" data-name="Promo 40 Piezas + Bebida" data-qty="40" data-rolls="4" data-price="16000" data-restricted="true" data-custom-fee="2000">Seleccionar opciones</button>
+      </div>
+
+      <!-- 50 piezas -->
+      <div class="product-card">
+        <img src="https://img.freepik.com/premium-photo/journey-sushi-rolls-with-kanikama_1184967-14739.jpg" class="product-img" alt="Promo 50 + Bebida">
+        <h4>50 Piezas + Bebida</h4>
+        <p class="product-desc">Rellenos Mixtos: Pollo, Carne, Camarón. Mixtas o Todo Panco. + 1 Bebida 1.5lt Pepsi</p>
+        <select class="box-select nori-select nori-global-promo" style="margin-bottom: 1rem;">
+          <option value="Con Nori">Con Nori</option>
+          <option value="Sin Nori">Sin Nori</option>
+        </select>
+        <span class="product-price">$18.000</span>
+        <button class="btn-select btn-add-promo" data-name="Promo 50 Piezas + Bebida" data-qty="50" data-rolls="5" data-price="18000" data-restricted="true" data-custom-fee="2500">Seleccionar opciones</button>
+      </div>
+
+      <!-- 60 piezas -->
+      <div class="product-card">
+        <img src="https://tse3.mm.bing.net/th/id/OIP.yiQP7PDnyrMSDOQ8pRK3NQHaE4?rs=1&pid=ImgDetMain&o=7&rm=3" class="product-img" alt="Promo 60 + Bebida">
+        <h4>60 Piezas + Bebida</h4>
+        <p class="product-desc">Rellenos: Pollo, Carne, Camarón, Kanikama. Mixtas o Todo Panco. + 1 Bebida 1.5lt Pepsi</p>
+        <select class="box-select nori-select nori-global-promo" style="margin-bottom: 1rem;">
+          <option value="Con Nori">Con Nori</option>
+          <option value="Sin Nori">Sin Nori</option>
+        </select>
+        <span class="product-price">$21.000</span>
+        <button class="btn-select btn-add-promo" data-name="Promo 60 Piezas + Bebida" data-qty="60" data-rolls="6" data-price="21000" data-restricted="true" data-custom-fee="3000">Seleccionar opciones</button>
+      </div>
+
+      <!-- 100 piezas -->
+      <div class="product-card">
+        <img src="https://tse1.mm.bing.net/th/id/OIP.Lu6LKF3PdEuhy9yT0KsVOgHaHa?w=553&h=553&rs=1&pid=ImgDetMain&o=7&rm=3" class="product-img" alt="Promo 100 + Bebida">
+        <h4>100 Piezas + Bebida</h4>
+        <p class="product-desc">Rellenos: Pollo, Carne, Camarón, Kanikama. Mixtas o Todo Panco. + 1 Bebida 1.5lt Pepsi</p>
+        <select class="box-select nori-select nori-global-promo" style="margin-bottom: 1rem;">
+          <option value="Con Nori">Con Nori</option>
+          <option value="Sin Nori">Sin Nori</option>
+        </select>
+        <span class="product-price">$30.000</span>
+        <button class="btn-select btn-add-promo" data-name="Promo 100 Piezas + Bebida" data-qty="100" data-rolls="10" data-price="30000" data-restricted="true" data-custom-fee="5000">Seleccionar opciones</button>
+      </div>
+
+      <!-- 30 piezas Mixta Especial -->
+      <div class="product-card">
+        <img src="https://cdn.pixabay.com/video/2024/12/12/246385_tiny.jpg" class="product-img" alt="Promo 30 Mixta Especial">
+        <h4>30 Piezas Mixta + Bebida</h4>
+        <p class="product-desc">3 Empanaditas, 3 Gyosas de Pollo. Mixta. + 1 Bebida 1.5lt Pepsi</p>
+        <select class="box-select nori-select nori-global-promo" style="margin-bottom: 1rem;">
+          <option value="Con Nori">Con Nori</option>
+          <option value="Sin Nori">Sin Nori</option>
+        </select>
+        <span class="product-price">$17.000</span>
+        <button class="btn-select btn-add-promo" data-name="Promo 30 Mixta + Bebida (+ Sides)" data-qty="30" data-rolls="3" data-price="17000" data-restricted="true" data-custom-fee="2000">Seleccionar opciones</button>
+      </div>
+
     </div>
   </div>
 </section>
@@ -120,6 +361,10 @@
               <option value="Chiss pop pollo">Chiss pop pollo</option>
             </select>
           </div>
+          <select class="box-select nori-select" style="margin-top: 1rem;">
+            <option value="Con Nori">Con Nori</option>
+            <option value="Sin Nori">Sin Nori</option>
+          </select>
           <button class="btn-box-add" data-name="Box Neko PapaRolls" data-price="20000">
             Agregar al carrito
           </button>
@@ -141,6 +386,10 @@
             <li>🧀 4 Dedos de queso</li>
             <li>🥤 1 Bebida 1.5lt</li>
           </ul>
+          <select class="box-select nori-select" style="margin-top: 1rem;">
+            <option value="Con Nori">Con Nori</option>
+            <option value="Sin Nori">Sin Nori</option>
+          </select>
           <button class="btn-box-add" data-name="Box NekoFamily" data-price="20000">
             Agregar al carrito
           </button>
@@ -174,6 +423,10 @@
               <option value="Chiss pop pollo">Chiss pop pollo</option>
             </select>
           </div>
+          <select class="box-select nori-select" style="margin-top: 1rem;">
+            <option value="Con Nori">Con Nori</option>
+            <option value="Sin Nori">Sin Nori</option>
+          </select>
           <button class="btn-box-add" data-name="Box NekoTripleMix" data-price="20000">
             Agregar al carrito
           </button>
@@ -258,6 +511,27 @@
         <img src="https://images.unsplash.com/photo-1553621042-f6e147245754" class="product-img" alt="Neko 01">
         <h4>Neko 01</h4>
         <p class="product-desc">Pollo, queso, palta, palmito</p>
+        <select class="box-select wrap-select" style="margin-bottom: 0.5rem;">
+          <option value="Panco">Enc. Panco</option>
+          <option value="Queso">Enc. Queso</option>
+          <option value="Palta">Enc. Palta</option>
+          <option value="Sésamo">Enc. Sésamo</option>
+          <option value="Cebollín">Enc. Cebollín</option>
+          <option value="Nori">Enc. Nori</option>
+          <option value="Merquén">Enc. Merquén</option>
+          <option value="Nori-Panco">Enc. Nori-Panco</option>
+          <option value="Panco Merquén">Enc. Panco Merq.</option>
+          <option value="Salmón">Enc. Salmón (+$1.500)</option>
+          <option value="Jamón Serrano">Enc. Jamón Serrano (+$1.500)</option>
+          <option value="Mango">Enc. Mango (+$1.000)</option>
+          <option value="Champiñón">Enc. Champiñón (+$500)</option>
+          <option value="Palmito">Enc. Palmito (+$500)</option>
+          <option value="Plátano Frito">Enc. Plátano Frito</option>
+        </select>
+        <select class="box-select nori-select" style="margin-bottom: 1rem;">
+          <option value="Con Nori">Con Nori</option>
+          <option value="Sin Nori">Sin Nori</option>
+        </select>
         <span class="product-price">$4.500</span>
         <button class="btn-select btn-add-cart" data-name="Neko 01" data-price="4500">Añadir al carrito</button>
       </div>
@@ -265,6 +539,27 @@
         <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c" class="product-img" alt="Neko 02">
         <h4>Neko 02</h4>
         <p class="product-desc">Pollo, camaron, queso, cebollin</p>
+        <select class="box-select wrap-select" style="margin-bottom: 0.5rem;">
+          <option value="Panco">Enc. Panco</option>
+          <option value="Queso">Enc. Queso</option>
+          <option value="Palta">Enc. Palta</option>
+          <option value="Sésamo">Enc. Sésamo</option>
+          <option value="Cebollín">Enc. Cebollín</option>
+          <option value="Nori">Enc. Nori</option>
+          <option value="Merquén">Enc. Merquén</option>
+          <option value="Nori-Panco">Enc. Nori-Panco</option>
+          <option value="Panco Merquén">Enc. Panco Merq.</option>
+          <option value="Salmón">Enc. Salmón (+$1.500)</option>
+          <option value="Jamón Serrano">Enc. Jamón Serrano (+$1.500)</option>
+          <option value="Mango">Enc. Mango (+$1.000)</option>
+          <option value="Champiñón">Enc. Champiñón (+$500)</option>
+          <option value="Palmito">Enc. Palmito (+$500)</option>
+          <option value="Plátano Frito">Enc. Plátano Frito</option>
+        </select>
+        <select class="box-select nori-select" style="margin-bottom: 1rem;">
+          <option value="Con Nori">Con Nori</option>
+          <option value="Sin Nori">Sin Nori</option>
+        </select>
         <span class="product-price">$5.200</span>
         <button class="btn-select btn-add-cart" data-name="Neko 02" data-price="5200">Añadir al carrito</button>
       </div>
@@ -272,6 +567,27 @@
         <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252" class="product-img" alt="Neko 03">
         <h4>Neko 03</h4>
         <p class="product-desc">Pollo, champiñón, queso, pepino</p>
+        <select class="box-select wrap-select" style="margin-bottom: 0.5rem;">
+          <option value="Panco">Enc. Panco</option>
+          <option value="Queso">Enc. Queso</option>
+          <option value="Palta">Enc. Palta</option>
+          <option value="Sésamo">Enc. Sésamo</option>
+          <option value="Cebollín">Enc. Cebollín</option>
+          <option value="Nori">Enc. Nori</option>
+          <option value="Merquén">Enc. Merquén</option>
+          <option value="Nori-Panco">Enc. Nori-Panco</option>
+          <option value="Panco Merquén">Enc. Panco Merq.</option>
+          <option value="Salmón">Enc. Salmón (+$1.500)</option>
+          <option value="Jamón Serrano">Enc. Jamón Serrano (+$1.500)</option>
+          <option value="Mango">Enc. Mango (+$1.000)</option>
+          <option value="Champiñón">Enc. Champiñón (+$500)</option>
+          <option value="Palmito">Enc. Palmito (+$500)</option>
+          <option value="Plátano Frito">Enc. Plátano Frito</option>
+        </select>
+        <select class="box-select nori-select" style="margin-bottom: 1rem;">
+          <option value="Con Nori">Con Nori</option>
+          <option value="Sin Nori">Sin Nori</option>
+        </select>
         <span class="product-price">$4.700</span>
         <button class="btn-select btn-add-cart" data-name="Neko 03" data-price="4700">Añadir al carrito</button>
       </div>
@@ -279,6 +595,27 @@
         <img src="https://images.unsplash.com/photo-1583623025817-d180a2221d0a" class="product-img" alt="Neko 04">
         <h4>Neko 04</h4>
         <p class="product-desc">Pollo, carne, queso, palta</p>
+        <select class="box-select wrap-select" style="margin-bottom: 0.5rem;">
+          <option value="Panco">Enc. Panco</option>
+          <option value="Queso">Enc. Queso</option>
+          <option value="Palta">Enc. Palta</option>
+          <option value="Sésamo">Enc. Sésamo</option>
+          <option value="Cebollín">Enc. Cebollín</option>
+          <option value="Nori">Enc. Nori</option>
+          <option value="Merquén">Enc. Merquén</option>
+          <option value="Nori-Panco">Enc. Nori-Panco</option>
+          <option value="Panco Merquén">Enc. Panco Merq.</option>
+          <option value="Salmón">Enc. Salmón (+$1.500)</option>
+          <option value="Jamón Serrano">Enc. Jamón Serrano (+$1.500)</option>
+          <option value="Mango">Enc. Mango (+$1.000)</option>
+          <option value="Champiñón">Enc. Champiñón (+$500)</option>
+          <option value="Palmito">Enc. Palmito (+$500)</option>
+          <option value="Plátano Frito">Enc. Plátano Frito</option>
+        </select>
+        <select class="box-select nori-select" style="margin-bottom: 1rem;">
+          <option value="Con Nori">Con Nori</option>
+          <option value="Sin Nori">Sin Nori</option>
+        </select>
         <span class="product-price">$5.300</span>
         <button class="btn-select btn-add-cart" data-name="Neko 04" data-price="5300">Añadir al carrito</button>
       </div>
@@ -286,6 +623,27 @@
         <img src="https://images.unsplash.com/photo-1617196034183-421b4917c92d" class="product-img" alt="Neko 05">
         <h4>Neko 05</h4>
         <p class="product-desc">Carne, queso, morrón, palta</p>
+        <select class="box-select wrap-select" style="margin-bottom: 0.5rem;">
+          <option value="Panco">Enc. Panco</option>
+          <option value="Queso">Enc. Queso</option>
+          <option value="Palta">Enc. Palta</option>
+          <option value="Sésamo">Enc. Sésamo</option>
+          <option value="Cebollín">Enc. Cebollín</option>
+          <option value="Nori">Enc. Nori</option>
+          <option value="Merquén">Enc. Merquén</option>
+          <option value="Nori-Panco">Enc. Nori-Panco</option>
+          <option value="Panco Merquén">Enc. Panco Merq.</option>
+          <option value="Salmón">Enc. Salmón (+$1.500)</option>
+          <option value="Jamón Serrano">Enc. Jamón Serrano (+$1.500)</option>
+          <option value="Mango">Enc. Mango (+$1.000)</option>
+          <option value="Champiñón">Enc. Champiñón (+$500)</option>
+          <option value="Palmito">Enc. Palmito (+$500)</option>
+          <option value="Plátano Frito">Enc. Plátano Frito</option>
+        </select>
+        <select class="box-select nori-select" style="margin-bottom: 1rem;">
+          <option value="Con Nori">Con Nori</option>
+          <option value="Sin Nori">Sin Nori</option>
+        </select>
         <span class="product-price">$4.500</span>
         <button class="btn-select btn-add-cart" data-name="Neko 05" data-price="4500">Añadir al carrito</button>
       </div>
@@ -293,6 +651,27 @@
         <img src="https://tofuu.getjusto.com/orioneat-local/resized2/spEEmLSwP8vDa57w7-300-x.webp" class="product-img" alt="Neko 06">
         <h4>Neko 06</h4>
         <p class="product-desc">Carne, queso, champiñón, cebollín</p>
+        <select class="box-select wrap-select" style="margin-bottom: 0.5rem;">
+          <option value="Panco">Enc. Panco</option>
+          <option value="Queso">Enc. Queso</option>
+          <option value="Palta">Enc. Palta</option>
+          <option value="Sésamo">Enc. Sésamo</option>
+          <option value="Cebollín">Enc. Cebollín</option>
+          <option value="Nori">Enc. Nori</option>
+          <option value="Merquén">Enc. Merquén</option>
+          <option value="Nori-Panco">Enc. Nori-Panco</option>
+          <option value="Panco Merquén">Enc. Panco Merq.</option>
+          <option value="Salmón">Enc. Salmón (+$1.500)</option>
+          <option value="Jamón Serrano">Enc. Jamón Serrano (+$1.500)</option>
+          <option value="Mango">Enc. Mango (+$1.000)</option>
+          <option value="Champiñón">Enc. Champiñón (+$500)</option>
+          <option value="Palmito">Enc. Palmito (+$500)</option>
+          <option value="Plátano Frito">Enc. Plátano Frito</option>
+        </select>
+        <select class="box-select nori-select" style="margin-bottom: 1rem;">
+          <option value="Con Nori">Con Nori</option>
+          <option value="Sin Nori">Sin Nori</option>
+        </select>
         <span class="product-price">$4.800</span>
         <button class="btn-select btn-add-cart" data-name="Neko 06" data-price="4800">Añadir al carrito</button>
       </div>
@@ -300,6 +679,27 @@
         <img src="https://images.unsplash.com/photo-1553621042-f6e147245754" class="product-img" alt="Neko 07">
         <h4>Neko 07</h4>
         <p class="product-desc">Carne, palmito, queso, morrón</p>
+        <select class="box-select wrap-select" style="margin-bottom: 0.5rem;">
+          <option value="Panco">Enc. Panco</option>
+          <option value="Queso">Enc. Queso</option>
+          <option value="Palta">Enc. Palta</option>
+          <option value="Sésamo">Enc. Sésamo</option>
+          <option value="Cebollín">Enc. Cebollín</option>
+          <option value="Nori">Enc. Nori</option>
+          <option value="Merquén">Enc. Merquén</option>
+          <option value="Nori-Panco">Enc. Nori-Panco</option>
+          <option value="Panco Merquén">Enc. Panco Merq.</option>
+          <option value="Salmón">Enc. Salmón (+$1.500)</option>
+          <option value="Jamón Serrano">Enc. Jamón Serrano (+$1.500)</option>
+          <option value="Mango">Enc. Mango (+$1.000)</option>
+          <option value="Champiñón">Enc. Champiñón (+$500)</option>
+          <option value="Palmito">Enc. Palmito (+$500)</option>
+          <option value="Plátano Frito">Enc. Plátano Frito</option>
+        </select>
+        <select class="box-select nori-select" style="margin-bottom: 1rem;">
+          <option value="Con Nori">Con Nori</option>
+          <option value="Sin Nori">Sin Nori</option>
+        </select>
         <span class="product-price">$4.200</span>
         <button class="btn-select btn-add-cart" data-name="Neko 07" data-price="4200">Añadir al carrito</button>
       </div>
@@ -307,6 +707,27 @@
         <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c" class="product-img" alt="Neko 08">
         <h4>Neko 08</h4>
         <p class="product-desc">Carne, queso, pepino, zanahoria</p>
+        <select class="box-select wrap-select" style="margin-bottom: 0.5rem;">
+          <option value="Panco">Enc. Panco</option>
+          <option value="Queso">Enc. Queso</option>
+          <option value="Palta">Enc. Palta</option>
+          <option value="Sésamo">Enc. Sésamo</option>
+          <option value="Cebollín">Enc. Cebollín</option>
+          <option value="Nori">Enc. Nori</option>
+          <option value="Merquén">Enc. Merquén</option>
+          <option value="Nori-Panco">Enc. Nori-Panco</option>
+          <option value="Panco Merquén">Enc. Panco Merq.</option>
+          <option value="Salmón">Enc. Salmón (+$1.500)</option>
+          <option value="Jamón Serrano">Enc. Jamón Serrano (+$1.500)</option>
+          <option value="Mango">Enc. Mango (+$1.000)</option>
+          <option value="Champiñón">Enc. Champiñón (+$500)</option>
+          <option value="Palmito">Enc. Palmito (+$500)</option>
+          <option value="Plátano Frito">Enc. Plátano Frito</option>
+        </select>
+        <select class="box-select nori-select" style="margin-bottom: 1rem;">
+          <option value="Con Nori">Con Nori</option>
+          <option value="Sin Nori">Sin Nori</option>
+        </select>
         <span class="product-price">$3.800</span>
         <button class="btn-select btn-add-cart" data-name="Neko 08" data-price="3800">Añadir al carrito</button>
       </div>
@@ -314,6 +735,27 @@
         <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252" class="product-img" alt="Neko 09">
         <h4>Neko 09</h4>
         <p class="product-desc">Kanikama, queso, palta, cebollín</p>
+        <select class="box-select wrap-select" style="margin-bottom: 0.5rem;">
+          <option value="Panco">Enc. Panco</option>
+          <option value="Queso">Enc. Queso</option>
+          <option value="Palta">Enc. Palta</option>
+          <option value="Sésamo">Enc. Sésamo</option>
+          <option value="Cebollín">Enc. Cebollín</option>
+          <option value="Nori">Enc. Nori</option>
+          <option value="Merquén">Enc. Merquén</option>
+          <option value="Nori-Panco">Enc. Nori-Panco</option>
+          <option value="Panco Merquén">Enc. Panco Merq.</option>
+          <option value="Salmón">Enc. Salmón (+$1.500)</option>
+          <option value="Jamón Serrano">Enc. Jamón Serrano (+$1.500)</option>
+          <option value="Mango">Enc. Mango (+$1.000)</option>
+          <option value="Champiñón">Enc. Champiñón (+$500)</option>
+          <option value="Palmito">Enc. Palmito (+$500)</option>
+          <option value="Plátano Frito">Enc. Plátano Frito</option>
+        </select>
+        <select class="box-select nori-select" style="margin-bottom: 1rem;">
+          <option value="Con Nori">Con Nori</option>
+          <option value="Sin Nori">Sin Nori</option>
+        </select>
         <span class="product-price">$4.000</span>
         <button class="btn-select btn-add-cart" data-name="Neko 09" data-price="4000">Añadir al carrito</button>
       </div>
@@ -321,6 +763,27 @@
         <img src="https://images.unsplash.com/photo-1583623025817-d180a2221d0a" class="product-img" alt="Neko 10">
         <h4>Neko 10</h4>
         <p class="product-desc">Kanikama, queso, palmito, morrón</p>
+        <select class="box-select wrap-select" style="margin-bottom: 0.5rem;">
+          <option value="Panco">Enc. Panco</option>
+          <option value="Queso">Enc. Queso</option>
+          <option value="Palta">Enc. Palta</option>
+          <option value="Sésamo">Enc. Sésamo</option>
+          <option value="Cebollín">Enc. Cebollín</option>
+          <option value="Nori">Enc. Nori</option>
+          <option value="Merquén">Enc. Merquén</option>
+          <option value="Nori-Panco">Enc. Nori-Panco</option>
+          <option value="Panco Merquén">Enc. Panco Merq.</option>
+          <option value="Salmón">Enc. Salmón (+$1.500)</option>
+          <option value="Jamón Serrano">Enc. Jamón Serrano (+$1.500)</option>
+          <option value="Mango">Enc. Mango (+$1.000)</option>
+          <option value="Champiñón">Enc. Champiñón (+$500)</option>
+          <option value="Palmito">Enc. Palmito (+$500)</option>
+          <option value="Plátano Frito">Enc. Plátano Frito</option>
+        </select>
+        <select class="box-select nori-select" style="margin-bottom: 1rem;">
+          <option value="Con Nori">Con Nori</option>
+          <option value="Sin Nori">Sin Nori</option>
+        </select>
         <span class="product-price">$4.000</span>
         <button class="btn-select btn-add-cart" data-name="Neko 10" data-price="4000">Añadir al carrito</button>
       </div>
@@ -328,13 +791,55 @@
         <img src="https://images.unsplash.com/photo-1617196034183-421b4917c92d" class="product-img" alt="Neko 11">
         <h4>Neko 11</h4>
         <p class="product-desc">Salmon, queso, palta, cebollin</p>
+        <select class="box-select wrap-select" style="margin-bottom: 0.5rem;">
+          <option value="Panco">Enc. Panco</option>
+          <option value="Queso">Enc. Queso</option>
+          <option value="Palta">Enc. Palta</option>
+          <option value="Sésamo">Enc. Sésamo</option>
+          <option value="Cebollín">Enc. Cebollín</option>
+          <option value="Nori">Enc. Nori</option>
+          <option value="Merquén">Enc. Merquén</option>
+          <option value="Nori-Panco">Enc. Nori-Panco</option>
+          <option value="Panco Merquén">Enc. Panco Merq.</option>
+          <option value="Salmón">Enc. Salmón (+$1.500)</option>
+          <option value="Jamón Serrano">Enc. Jamón Serrano (+$1.500)</option>
+          <option value="Mango">Enc. Mango (+$1.000)</option>
+          <option value="Champiñón">Enc. Champiñón (+$500)</option>
+          <option value="Palmito">Enc. Palmito (+$500)</option>
+          <option value="Plátano Frito">Enc. Plátano Frito</option>
+        </select>
+        <select class="box-select nori-select" style="margin-bottom: 1rem;">
+          <option value="Con Nori">Con Nori</option>
+          <option value="Sin Nori">Sin Nori</option>
+        </select>
         <span class="product-price">$4.500</span>
         <button class="btn-select btn-add-cart" data-name="Neko 11" data-price="4500">Añadir al carrito</button>
       </div>
       <div class="product-card">
         <img src="https://images.unsplash.com/photo-1553621042-f6e147245754" class="product-img" alt="Neko 12">
         <h4>Neko 12</h4>
-        <p class="product-desc">Salmon, mango, queso, palta</p>
+        <p class="product-desc">Salmón, mango, queso, palta</p>
+        <select class="box-select wrap-select" style="margin-bottom: 0.5rem;">
+          <option value="Panco">Enc. Panco</option>
+          <option value="Queso">Enc. Queso</option>
+          <option value="Palta">Enc. Palta</option>
+          <option value="Sésamo">Enc. Sésamo</option>
+          <option value="Cebollín">Enc. Cebollín</option>
+          <option value="Nori">Enc. Nori</option>
+          <option value="Merquén">Enc. Merquén</option>
+          <option value="Nori-Panco">Enc. Nori-Panco</option>
+          <option value="Panco Merquén">Enc. Panco Merq.</option>
+          <option value="Salmón">Enc. Salmón (+$1.500)</option>
+          <option value="Jamón Serrano">Enc. Jamón Serrano (+$1.500)</option>
+          <option value="Mango">Enc. Mango (+$1.000)</option>
+          <option value="Champiñón">Enc. Champiñón (+$500)</option>
+          <option value="Palmito">Enc. Palmito (+$500)</option>
+          <option value="Plátano Frito">Enc. Plátano Frito</option>
+        </select>
+        <select class="box-select nori-select" style="margin-bottom: 1rem;">
+          <option value="Con Nori">Con Nori</option>
+          <option value="Sin Nori">Sin Nori</option>
+        </select>
         <span class="product-price">$5.800</span>
         <button class="btn-select btn-add-cart" data-name="Neko 12" data-price="5800">Añadir al carrito</button>
       </div>
@@ -342,6 +847,27 @@
         <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c" class="product-img" alt="Neko 13">
         <h4>Neko 13</h4>
         <p class="product-desc">Salmon, palmito, champiñón, queso</p>
+        <select class="box-select wrap-select" style="margin-bottom: 0.5rem;">
+          <option value="Panco">Enc. Panco</option>
+          <option value="Queso">Enc. Queso</option>
+          <option value="Palta">Enc. Palta</option>
+          <option value="Sésamo">Enc. Sésamo</option>
+          <option value="Cebollín">Enc. Cebollín</option>
+          <option value="Nori">Enc. Nori</option>
+          <option value="Merquén">Enc. Merquén</option>
+          <option value="Nori-Panco">Enc. Nori-Panco</option>
+          <option value="Panco Merquén">Enc. Panco Merq.</option>
+          <option value="Salmón">Enc. Salmón (+$1.500)</option>
+          <option value="Jamón Serrano">Enc. Jamón Serrano (+$1.500)</option>
+          <option value="Mango">Enc. Mango (+$1.000)</option>
+          <option value="Champiñón">Enc. Champiñón (+$500)</option>
+          <option value="Palmito">Enc. Palmito (+$500)</option>
+          <option value="Plátano Frito">Enc. Plátano Frito</option>
+        </select>
+        <select class="box-select nori-select" style="margin-bottom: 1rem;">
+          <option value="Con Nori">Con Nori</option>
+          <option value="Sin Nori">Sin Nori</option>
+        </select>
         <span class="product-price">$5.900</span>
         <button class="btn-select btn-add-cart" data-name="Neko 13" data-price="5900">Añadir al carrito</button>
       </div>
@@ -349,6 +875,27 @@
         <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252" class="product-img" alt="Neko 14">
         <h4>Neko 14</h4>
         <p class="product-desc">Camarón, mango, queso, palta</p>
+        <select class="box-select wrap-select" style="margin-bottom: 0.5rem;">
+          <option value="Panco">Enc. Panco</option>
+          <option value="Queso">Enc. Queso</option>
+          <option value="Palta">Enc. Palta</option>
+          <option value="Sésamo">Enc. Sésamo</option>
+          <option value="Cebollín">Enc. Cebollín</option>
+          <option value="Nori">Enc. Nori</option>
+          <option value="Merquén">Enc. Merquén</option>
+          <option value="Nori-Panco">Enc. Nori-Panco</option>
+          <option value="Panco Merquén">Enc. Panco Merq.</option>
+          <option value="Salmón">Enc. Salmón (+$1.500)</option>
+          <option value="Jamón Serrano">Enc. Jamón Serrano (+$1.500)</option>
+          <option value="Mango">Enc. Mango (+$1.000)</option>
+          <option value="Champiñón">Enc. Champiñón (+$500)</option>
+          <option value="Palmito">Enc. Palmito (+$500)</option>
+          <option value="Plátano Frito">Enc. Plátano Frito</option>
+        </select>
+        <select class="box-select nori-select" style="margin-bottom: 1rem;">
+          <option value="Con Nori">Con Nori</option>
+          <option value="Sin Nori">Sin Nori</option>
+        </select>
         <span class="product-price">$5.400</span>
         <button class="btn-select btn-add-cart" data-name="Neko 14" data-price="5400">Añadir al carrito</button>
       </div>
@@ -356,6 +903,27 @@
         <img src="https://images.unsplash.com/photo-1583623025817-d180a2221d0a" class="product-img" alt="Neko 15">
         <h4>Neko 15</h4>
         <p class="product-desc">Camarón, queso, morrón, pepino</p>
+        <select class="box-select wrap-select" style="margin-bottom: 0.5rem;">
+          <option value="Panco">Enc. Panco</option>
+          <option value="Queso">Enc. Queso</option>
+          <option value="Palta">Enc. Palta</option>
+          <option value="Sésamo">Enc. Sésamo</option>
+          <option value="Cebollín">Enc. Cebollín</option>
+          <option value="Nori">Enc. Nori</option>
+          <option value="Merquén">Enc. Merquén</option>
+          <option value="Nori-Panco">Enc. Nori-Panco</option>
+          <option value="Panco Merquén">Enc. Panco Merq.</option>
+          <option value="Salmón">Enc. Salmón (+$1.500)</option>
+          <option value="Jamón Serrano">Enc. Jamón Serrano (+$1.500)</option>
+          <option value="Mango">Enc. Mango (+$1.000)</option>
+          <option value="Champiñón">Enc. Champiñón (+$500)</option>
+          <option value="Palmito">Enc. Palmito (+$500)</option>
+          <option value="Plátano Frito">Enc. Plátano Frito</option>
+        </select>
+        <select class="box-select nori-select" style="margin-bottom: 1rem;">
+          <option value="Con Nori">Con Nori</option>
+          <option value="Sin Nori">Sin Nori</option>
+        </select>
         <span class="product-price">$5.600</span>
         <button class="btn-select btn-add-cart" data-name="Neko 15" data-price="5600">Añadir al carrito</button>
       </div>
@@ -363,57 +931,64 @@
   </div>
 </section>
 
-<!-- =========  TORTAS SUSHI (Expanded)  ========= -->
-<section class="section menu-section" id="menu-tortas" style="display:none">
+<!-- =========  BEBIDAS  ========= -->
+<section class="section menu-section" id="menu-bebidas" style="display:none">
   <div class="container">
     <div class="section-header">
-      <span class="section-badge">🎂 Celebraciones</span>
-      <h2>Tortas Sushi</h2>
-      <p>Personaliza tu torta eligiendo tus rolls favoritos.</p>
+      <span class="section-badge">🥤 Refrescantes</span>
+      <h2>Bebidas 1.75L</h2>
+      <p>El complemento ideal para tu sushi.</p>
     </div>
     <div class="product-grid">
+      
       <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252" class="product-img" alt="Torta 50">
-        <h4>Torta 50 Piezas</h4>
-        <span class="product-price">$30.000</span>
-        <button class="btn-select btn-add-promo" data-qty="50" data-rolls="5" data-price="30000">Armar Torta</button>
+        <img src="https://static.condisline.com/resize_1280x1347/images/catalog/large/603419.jpg" class="product-img" alt="Pepsi">
+        <h4>Pepsi 1.75L</h4>
+        <p class="product-desc">Bebida gaseosa sabor cola original.</p>
+        <span class="product-price">$2.500</span>
+        <button class="btn-select btn-add-cart" data-name="Pepsi 1.75L" data-price="2500">Añadir al carrito</button>
       </div>
+
       <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c" class="product-img" alt="Torta 80">
-        <h4>Torta 80 Piezas</h4>
-        <span class="product-price">$35.000</span>
-        <button class="btn-select btn-add-promo" data-qty="80" data-rolls="8" data-price="35000">Armar Torta</button>
+        <img src="https://supermercadovirtual.cl/wp-content/uploads/2022/08/540-2.png" class="product-img" alt="Pepsi Zero">
+        <h4>Pepsi Zero 1.75L</h4>
+        <p class="product-desc">El sabor de siempre, cero azúcar.</p>
+        <span class="product-price">$2.500</span>
+        <button class="btn-select btn-add-cart" data-name="Pepsi Zero 1.75L" data-price="2500">Añadir al carrito</button>
       </div>
+
       <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1553621042-f6e147245754" class="product-img" alt="Torta 100">
-        <h4>Torta 100 Piezas</h4>
-        <span class="product-price">$40.000</span>
-        <button class="btn-select btn-add-promo" data-qty="100" data-rolls="10" data-price="40000">Armar Torta</button>
+        <img src="https://tse2.mm.bing.net/th/id/OIP.ywEJ46TplL_2tNwloD4nNAHaJ_?rs=1&pid=ImgDetMain&o=7&rm=3" class="product-img" alt="Kem">
+        <h4>Kem 1.75L</h4>
+        <p class="product-desc">Bebida sabor piña refrescante.</p>
+        <span class="product-price">$2.500</span>
+        <button class="btn-select btn-add-cart" data-name="Kem 1.75L" data-price="2500">Añadir al carrito</button>
       </div>
+
       <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252" class="product-img" alt="Torta 120">
-        <h4>Torta 120 Piezas</h4>
-        <span class="product-price">$46.000</span>
-        <button class="btn-select btn-add-promo" data-qty="120" data-rolls="12" data-price="46000">Armar Torta</button>
+        <img src="https://tse4.mm.bing.net/th/id/OIP.gPc5yW2fqmfy0tDZurrRIwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" class="product-img" alt="Bilz">
+        <h4>Bilz 1.75L</h4>
+        <p class="product-desc">Sabor frutal clásico para compartir.</p>
+        <span class="product-price">$2.500</span>
+        <button class="btn-select btn-add-cart" data-name="Bilz 1.75L" data-price="2500">Añadir al carrito</button>
       </div>
+
       <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c" class="product-img" alt="Torta 150">
-        <h4>Torta 150 Piezas</h4>
-        <span class="product-price">$55.000</span>
-        <button class="btn-select btn-add-promo" data-qty="150" data-rolls="15" data-price="55000">Armar Torta</button>
+        <img src="https://tse2.mm.bing.net/th/id/OIP.-VRSXv1Pu0uBd9Je0bPQ8wHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" class="product-img" alt="Pap">
+        <h4>Pap 1.75L</h4>
+        <p class="product-desc">Bebida sabor papaya andina.</p>
+        <span class="product-price">$2.500</span>
+        <button class="btn-select btn-add-cart" data-name="Pap 1.75L" data-price="2500">Añadir al carrito</button>
       </div>
+
       <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252" class="product-img" alt="Torta 170">
-        <h4>Torta 170 Piezas</h4>
-        <span class="product-price">$65.000</span>
-        <button class="btn-select btn-add-promo" data-qty="170" data-rolls="17" data-price="65000">Armar Torta</button>
+        <img src="https://th.bing.com/th/id/R.7745743519411540f77d9b43d4567d6a?rik=Vw8PDDhc09xx5g&riu=http%3a%2f%2fentrelatas.cl%2fcdn%2fshop%2ffiles%2fBebidaCanadaDryGingelAle2lt.jpg%3fv%3d1686594164&ehk=itkgWacxOdMZaVHXn2Y%2bM4GAFVPSiGkScGusiLwzCsg%3d&risl=&pid=ImgRaw&r=0" class="product-img" alt="Canada Dry">
+        <h4>Canada Dry 1.75L</h4>
+        <p class="product-desc">Gin-Ger Ale, el toque burbujeante.</p>
+        <span class="product-price">$2.500</span>
+        <button class="btn-select btn-add-cart" data-name="Canada Dry 1.75L" data-price="2500">Añadir al carrito</button>
       </div>
-      <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1583623025817-d180a2221d0a" class="product-img" alt="Torta 200">
-        <h4>Torta 200 Piezas</h4>
-        <span class="product-price">$73.000</span>
-        <button class="btn-select btn-add-promo" data-qty="200" data-rolls="20" data-price="73000">Armar Torta</button>
-      </div>
+
     </div>
   </div>
 </section>
@@ -425,28 +1000,95 @@
       <span class="section-badge">🌯 On the go</span>
       <h2>Hand Rolls Special</h2>
     </div>
+
+    <!-- Handrolls Express -->
+    <h3 class="subsection-title" style="text-align: center; margin-bottom: 2rem; color: var(--primary);">🚀 Handrolls Express (Relleno Fijo)</h3>
+    <p style="text-align: center; margin-top: -1.5rem; margin-bottom: 2rem; color: var(--text-soft); font-size: 0.9rem;">Relleno único: Pollo, Queso, Cebollín. (Opción más económica)</p>
+    
+    <div class="product-grid" style="margin-bottom: 4rem;">
+      <div class="product-card">
+        <img src="https://sushikitami.cl/wp-content/uploads/2023/07/SUSHI-1-4.png" class="product-img" alt="1 HR Express">
+        <h4>1 HR Express</h4>
+        <p class="product-desc">Pollo, Queso, Cebollín.</p>
+        <select class="box-select nori-select" style="margin-bottom: 1rem;">
+          <option value="Con Nori">Con Nori</option>
+          <option value="Sin Nori">Sin Nori</option>
+        </select>
+        <span class="product-price">$3.000</span>
+        <button class="btn-select btn-add-cart" data-name="Handroll Express (Pollo/Queso/Ceb)" data-price="3000">Añadir al carrito</button>
+      </div>
+
+      <div class="product-card">
+        <img src="https://kodamasushi.cl/wp-content/uploads/2021/02/3-handrolls.jpg" class="product-img" alt="3 HR Express">
+        <h4>3 HR Express</h4>
+        <p class="product-desc">Pollo, Queso, Cebollín.</p>
+        <select class="box-select nori-select" style="margin-bottom: 1rem;">
+          <option value="Con Nori">Con Nori</option>
+          <option value="Sin Nori">Sin Nori</option>
+        </select>
+        <span class="product-price">$8.000</span>
+        <button class="btn-select btn-add-cart" data-name="Promo 3 HR Express (Pollo/Queso/Ceb)" data-price="8000">Añadir al carrito</button>
+      </div>
+
+      <div class="product-card">
+        <img src="https://tofuu.getjusto.com/orioneat-local/resized2/7ke9YxFkaRwwaBk9f-300-x.webp" class="product-img" alt="4 HR Express">
+        <h4>4 HR Express</h4>
+        <p class="product-desc">Pollo, Queso, Cebollín.</p>
+        <select class="box-select nori-select" style="margin-bottom: 1rem;">
+          <option value="Con Nori">Con Nori</option>
+          <option value="Sin Nori">Sin Nori</option>
+        </select>
+        <span class="product-price">$10.000</span>
+        <button class="btn-select btn-add-cart" data-name="Promo 4 HR Express (Pollo/Queso/Ceb)" data-price="10000">Añadir al carrito</button>
+      </div>
+    </div>
+
+    <!-- Handrolls Premium -->
+    <h3 class="subsection-title" style="text-align: center; margin-bottom: 2rem; color: var(--primary);">💎 Handrolls Premium (Personalizados)</h3>
+    <p style="text-align: center; margin-top: -1.5rem; margin-bottom: 2rem; color: var(--text-soft); font-size: 0.9rem;">Elige tus rellenos favoritos en el armador.</p>
+
     <div class="product-grid">
       <div class="product-card">
         <img src="https://sushikitami.cl/wp-content/uploads/2023/07/SUSHI-1-4.png" class="product-img" alt="1 HR">
-        <h4>1 Handroll</h4>
+        <h4>1 Handroll Premium</h4>
+        <p class="product-desc">Arma tu relleno a elección.</p>
+        <select class="box-select nori-select" style="margin-bottom: 1rem;">
+          <option value="Con Nori">Con Nori</option>
+          <option value="Sin Nori">Sin Nori</option>
+        </select>
         <span class="product-price">$4.000</span>
         <button class="btn-select btn-add-promo" data-qty="1" data-rolls="1" data-price="4000">Personalizar</button>
       </div>
       <div class="product-card">
         <img src="https://kodamasushi.cl/wp-content/uploads/2021/02/3-handrolls.jpg" class="product-img" alt="3 HR">
-        <h4>3 Handrolls</h4>
+        <h4>3 Handrolls Premium</h4>
+        <p class="product-desc">Arma tus rellenos a elección.</p>
+        <select class="box-select nori-select" style="margin-bottom: 1rem;">
+          <option value="Con Nori">Con Nori</option>
+          <option value="Sin Nori">Sin Nori</option>
+        </select>
         <span class="product-price">$9.000</span>
         <button class="btn-select btn-add-promo" data-qty="3" data-rolls="3" data-price="9000">Personalizar</button>
       </div>
       <div class="product-card">
         <img src="https://tofuu.getjusto.com/orioneat-local/resized2/7ke9YxFkaRwwaBk9f-300-x.webp" class="product-img" alt="4 HR">
-        <h4>4 Handrolls</h4>
+        <h4>4 Handrolls Premium</h4>
+        <p class="product-desc">Arma tus rellenos a elección.</p>
+        <select class="box-select nori-select" style="margin-bottom: 1rem;">
+          <option value="Con Nori">Con Nori</option>
+          <option value="Sin Nori">Sin Nori</option>
+        </select>
         <span class="product-price">$12.000</span>
         <button class="btn-select btn-add-promo" data-qty="4" data-rolls="4" data-price="12000">Personalizar</button>
       </div>
       <div class="product-card">
         <img src="https://images.unsplash.com/photo-1617196034183-421b4917c92d" class="product-img" alt="10 HR">
         <h4>Mega Promo 10 HR</h4>
+        <p class="product-desc">Para compartir con todos.</p>
+        <select class="box-select nori-select" style="margin-bottom: 1rem;">
+          <option value="Con Nori">Con Nori</option>
+          <option value="Sin Nori">Sin Nori</option>
+        </select>
         <span class="product-price">$30.000</span>
         <button class="btn-select btn-add-promo" data-qty="10" data-rolls="10" data-price="30000">Personalizar</button>
       </div>
@@ -563,7 +1205,7 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="Imagenes/logo.jpeg" alt="Neko Sushi Rolls" class="footer-logo"/>
+        <img src="Imagenes/logo.jpeg" alt="NEKOSUSHIROLLS" class="footer-logo"/>
         <p>El mejor sushi de Antofagasta. Calidad premium y frescura en cada pieza. 🍣🐱</p>
         <div class="footer-social">
           <a href="https://www.instagram.com/nekosushirolls" target="_blank">📸 Instagram</a>
@@ -572,9 +1214,11 @@
       </div>
       <div class="footer-nav">
         <h4>Carta</h4>
+        <a href="javascript:void(0)" onclick="showCategorySection('menu-ofertas')">Ofertas</a>
+        <a href="javascript:void(0)" onclick="showCategorySection('menu-promo-bebida')">Promo + Bebida</a>
         <a href="javascript:void(0)" onclick="showCategorySection('promociones')">Promociones</a>
         <a href="javascript:void(0)" onclick="showCategorySection('menu-premium')">Sushi Premium</a>
-        <a href="javascript:void(0)" onclick="showCategorySection('menu-tortas')">Tortas Sushi</a>
+        <a href="javascript:void(0)" onclick="showCategorySection('menu-bebidas')">Bebidas</a>
         <a href="javascript:void(0)" onclick="showCategorySection('menu-handrolls')">Handrolls</a>
       </div>
       <div class="footer-contact">
@@ -635,8 +1279,7 @@
 
         <div class="form-row">
           <select id="drawerPayment" class="drawer-select">
-            <option value="debito" selected>💳 Débito</option>
-            <option value="efectivo">💵 Efectivo</option>
+            <option value="efectivo" selected>💵 Efectivo</option>
             <option value="transferencia">📱 Transferencia</option>
           </select>
         </div>
