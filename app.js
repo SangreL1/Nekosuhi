@@ -122,7 +122,7 @@ const PromoBuilder = {
                 <label>ENVOLTURA</label>
                 <select class="selection-select" onchange="PromoBuilder.setWrap(${idx}, this.value)">
                   ${WRAPS.map(w => `
-                    <option value="${w}" ${roll.wrap === w ? 'selected' : ''}>${w} ${WRAP_PRICES[w] ? '(' + formatPrice(WRAP_PRICES[w]) + ')' : ''}</option>
+                    <option value="${w}" ${roll.wrap === w ? 'selected' : ''}>Env. ${w} ${WRAP_PRICES[w] ? '(' + formatPrice(WRAP_PRICES[w]) + ')' : ''}</option>
                   `).join('')}
                 </select>
               </div>
