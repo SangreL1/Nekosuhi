@@ -23,6 +23,18 @@ const WRAP_PRICES = {
   "Palmito": 500
 };
 
+<<<<<<< HEAD
+=======
+const DRINKS_LIST = [
+  { name: "Pepsi 1.5L", price: 0 },
+  { name: "Pepsi Zero 1.5L", price: 0 },
+  { name: "Kem 1.5L", price: 0 },
+  { name: "Bilz 1.5L", price: 0 },
+  { name: "Pap 1.5L", price: 0 },
+  { name: "Canada Dry 1.5L", price: 0 }
+];
+
+>>>>>>> 64ade28 (Arreglo de bebidas)
 // ── STATE ───────────────────────────────────────────────────
 let cart = [];
 let deliveryType = 'delivery';
@@ -37,9 +49,16 @@ const drawerTotal = document.getElementById('drawerTotal');
 // ── PROMO BUILDER ──────────────────────────────────────────
 const PromoBuilder = {
   active: false,
+<<<<<<< HEAD
   currentPromo: null, // { qty, rolls, price, name, restricted, customFee }
   selections: [], // [{ protein, ingredients: [], wrap }]
   customizing: false,
+=======
+  currentPromo: null, // { qty, rolls, price, name, restricted, customFee, hasDrink }
+  selections: [], // [{ protein, ingredients: [], wrap }]
+  customizing: false,
+  selectedDrink: DRINKS_LIST[0].name,
+>>>>>>> 64ade28 (Arreglo de bebidas)
 
   open(promo, imgUrl) {
     this.active = true;
@@ -52,6 +71,11 @@ const PromoBuilder = {
       wrap: "Panco",
       nori: "Con Nori"
     }));
+<<<<<<< HEAD
+=======
+    
+    this.selectedDrink = DRINKS_LIST[0].name;
+>>>>>>> 64ade28 (Arreglo de bebidas)
 
     document.getElementById('promoBuilderModal').classList.add('open');
     if (imgUrl) document.getElementById('builderPromoImg').src = imgUrl;
@@ -74,6 +98,26 @@ const PromoBuilder = {
 
     let html = '';
     
+<<<<<<< HEAD
+=======
+    if (this.currentPromo.hasDrink) {
+      html += `
+        <div class="drink-selection-area" style="margin-bottom: 1.5rem; padding: 1.2rem; background: rgba(232,126,26,0.05); border-radius: 12px; border: 1px solid var(--primary);">
+          <h4 style="margin-bottom: 0.8rem; font-weight: 800; color: var(--primary); display:flex; align-items:center; gap:0.5rem;">
+            🥤 ELIGE TU BEBIDA
+          </h4>
+          <select class="selection-select" onchange="PromoBuilder.setDrink(this.value)" style="width:100%; font-weight:600;">
+            ${DRINKS_LIST.map(d => `
+              <option value="${d.name}" ${this.selectedDrink === d.name ? 'selected' : ''}>
+                ${d.name} ${d.price > 0 ? '(+' + formatPrice(d.price) + ')' : ''}
+              </option>
+            `).join('')}
+          </select>
+        </div>
+      `;
+    }
+
+>>>>>>> 64ade28 (Arreglo de bebidas)
     // Header for customization choice
     if (this.currentPromo.restricted) {
       html += `
@@ -164,6 +208,15 @@ const PromoBuilder = {
         });
       });
     }
+<<<<<<< HEAD
+=======
+    
+    // Add drink surcharge
+    if (this.currentPromo.hasDrink) {
+      const drinkData = DRINKS_LIST.find(d => d.name === this.selectedDrink);
+      if (drinkData && drinkData.price > 0) total += drinkData.price;
+    }
+>>>>>>> 64ade28 (Arreglo de bebidas)
 
     if (this.customizing) {
       itemCount.textContent = `${completedRolls} / ${this.currentPromo.rolls} Rolls listos`;
@@ -206,6 +259,14 @@ const PromoBuilder = {
     this.render();
   },
 
+<<<<<<< HEAD
+=======
+  setDrink(name) {
+    this.selectedDrink = name;
+    this.render();
+  },
+
+>>>>>>> 64ade28 (Arreglo de bebidas)
   confirm() {
     let finalPrice = this.currentPromo.price;
     let details = 'Combo Estándar (Fijo)';
@@ -231,6 +292,13 @@ const PromoBuilder = {
       details += ` | ${nori}`;
     }
 
+<<<<<<< HEAD
+=======
+    if (this.currentPromo.hasDrink) {
+      details += ` | Bebida: ${this.selectedDrink}`;
+    }
+
+>>>>>>> 64ade28 (Arreglo de bebidas)
     addToCart(this.currentPromo.name, finalPrice, { details });
     this.close();
   }
@@ -426,7 +494,12 @@ document.addEventListener('DOMContentLoaded', () => {
         price: parseInt(promoBtn.dataset.price),
         name: promoBtn.dataset.name || `Promo ${promoBtn.dataset.qty} Piezas`,
         restricted: promoBtn.dataset.restricted === "true",
+<<<<<<< HEAD
         customFee: parseInt(promoBtn.dataset.customFee || 0)
+=======
+        customFee: parseInt(promoBtn.dataset.customFee || 0),
+        hasDrink: promoBtn.dataset.hasDrink === "true"
+>>>>>>> 64ade28 (Arreglo de bebidas)
       }, img);
     }
 
@@ -538,11 +611,20 @@ function closeMenu() {
 document.addEventListener('click', (e) => {
   if (e.target.classList.contains('btn-box-add')) {
     const card = e.target.closest('.box-card');
+<<<<<<< HEAD
     const topping = card.querySelector('.box-select')?.value || 'Sin topping';
     const nori = card.querySelector('.nori-select')?.value || 'Con Nori';
     const name = e.target.dataset.name;
     const price = parseInt(e.target.dataset.price);
     addToCart(name, price, { details: `Topping: ${topping} | Nori: ${nori}` });
+=======
+    const topping = card.querySelector('#topping-papa, #topping-triple')?.value || 'Sin topping';
+    const drink = card.querySelector('.drink-select')?.value || 'No elegida';
+    const nori = card.querySelector('.nori-select')?.value || 'Con Nori';
+    const name = e.target.dataset.name;
+    const price = parseInt(e.target.dataset.price);
+    addToCart(name, price, { details: `Bebida: ${drink} | Topping: ${topping} | Nori: ${nori}` });
+>>>>>>> 64ade28 (Arreglo de bebidas)
   }
 });
 
@@ -571,8 +653,14 @@ document.addEventListener('click', (e) => {
 
     details = `Roll 1: ${f1} en ${w1} | Roll 2: ${f2} en ${w2} | ${nori}`;
   } else if (type === '3-hr') {
+<<<<<<< HEAD
     const nori = card.querySelector('.nori-choice').value;
     details = `Relleno Fijo (Pollo). ${nori}`;
+=======
+    const drink = card.querySelector('.drink-select').value;
+    const nori = card.querySelector('.nori-choice').value;
+    details = `Bebida: ${drink} | Relleno Fijo (Pollo). ${nori}`;
+>>>>>>> 64ade28 (Arreglo de bebidas)
   }
 
   addToCart(name, finalPrice, details ? { details } : null);
